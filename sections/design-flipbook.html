@@ -202,10 +202,6 @@ const digitalDevice=document.querySelector('#digital-device');
 const digitalScreen=document.querySelector('#digital-screen-image');
 const digitalCaption=document.querySelector('#digitalCaption');
 const designImages=[
-  '../images/page1.png',
-  '../images/page2.png',
-  '../images/page3.png',
-  '../images/page4.png',
   '../images/AAA-website.png'
 ];
 function flipSectionProgress(){const r=flipSection.getBoundingClientRect();const travel=flipSection.offsetHeight-innerHeight;return travel>0?THREE.MathUtils.clamp(-r.top/travel,0,1):0}

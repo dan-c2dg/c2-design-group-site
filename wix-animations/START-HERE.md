@@ -1,0 +1,82 @@
+# C2DG — one embed with navigation, version 3
+
+The navbar, submenus, animations, photography galleries, and lightbox are now inside ONE GitHub-hosted page. The Wix contact form and footer stay native. Previous/Next navigation buttons are not included.
+
+## 1. Update GitHub
+
+Upload the contents of this package into the existing `wix-animations` folder of your `c2-design-group-site` repository, replacing the previous package files. Keep assets, images, models, and vendor folders together. No build/install is needed.
+
+The expected published animation URL is:
+`https://dan-c2dg.github.io/c2-design-group-site/wix-animations/index.html`
+
+This package has not been deployed for you. If you use another folder, change the iframe src in `wix-embed-code.html` to the actual published URL.
+
+## 2. Set up Wix
+
+1. Remove or hide the previous Wix navbar/header **on this page** so it does not overlap or duplicate the embedded navbar. Keep the native contact form and footer. If Wix does not allow page-specific header hiding in your setup, make the page's header empty with no retained spacer or pinned overlay, or use a page layout without that header.
+2. Add one full-width Wix section above the native contact section. Give it 100vh height with zero padding.
+3. Add a Wix **Embed HTML / Embed Code** element in it. Set it to full width and 100vh high. Do not auto-expand it to the entire internal document's height. Avoid Wix snapping or scroll effects on this element.
+4. Set that HTML element's **element ID** in the Properties/Events panel to `htmlAnimations`. Wix displays the selector as `#htmlAnimations`.
+5. Paste the entire contents of `wix-embed-code.html` into that element's HTML code field. This is the small relay wrapper. **Do not paste `index.html`.** It needs its GitHub-hosted assets.
+6. Select the native Wix section that contains your contact form. Set its **element ID** to `contactSection`. This ID belongs to the SECTION, not a text heading or input.
+7. Enable frontend page coding/Velo. Open the home page's page code and replace the previous C2DG navbar/animation code with `wix-page-code.js`. Preserve any unrelated contact-form or other page code. Merge imports; do not create duplicate imports of `wix-window-frontend`.
+8. Publish your Wix changes and reload the published page. Test there rather than relying only on the Wix editor preview.
+
+No Wix `navOurWork`, submenu boxes, or separate navbar click handlers are needed anymore. The old `animationSection` ID is not required by the v3 page code.
+
+## How Let's Elevate reaches the native Wix contact form
+
+The embedded button sends a CONTACT message through the relay. The Wix frontend code receives it and runs:
+
+```js
+await $w('#contactSection').scrollTo();
+```
+
+This scrolls the outer Wix page to your existing contact section. It does not open a new page or duplicate your contact form. Requests made before the connection is ready are queued briefly. Successful contact navigation receives an acknowledgement; failed wiring shows a short status message and a console error.
+
+Scrolling past the last animated section also moves to the Wix contact section. The embedded navbar remains inside the iframe: it will leave view when the outer Wix page scrolls to the contact/footer. Scroll back up to return to the portfolio.
+
+## Domains and wrapper configuration
+
+The wrapper's `allowedWixOrigins` initially contains `https://creative-c2dg.wixstudio.com`. If you connect a custom domain, add its exact origin there, including `https://` and any `www`, without a page path or trailing slash. Repaste the edited wrapper into Wix and republish.
+
+The child accepts messages only from its immediate parent and pins the replying origin. The wrapper validates the GitHub origin and the allowed Wix origin. The old `config.js` parentOrigins array is not used by the current child bridge.
+
+## Navigation and gallery layering
+
+Our Work opens a dropdown with Work Overview, Branding, Print & Digital Media, Certified Drone, Photography, and Videography. Photography expands to its overview and Aerials, Architecture, People, and Events + Products galleries. Desktop menus support hover and click; mobile uses the Menu button and expandable summaries. Our Story and Our Mission navigate inside the same document.
+
+Layer values in `assets/site.css`:
+
+| Element | z-index |
+|---|---|
+| Navigation | 3000 |
+| Gallery lightbox | 2000 |
+| Connection status message | 4000 |
+
+The lightbox begins at `--embedded-nav-bottom`, calculated from the embedded navbar's actual bottom edge. Its image area fits below that edge. Changing z-index is unnecessary for normal use. A Wix header outside the iframe has its own stacking order, so remove the old header overlay as instructed above.
+
+Opening a gallery saves the internal scroll position and locks both document/body scrolling. Closing it restores the previous overflow styles and scroll position without focusing an offscreen element into view. This targets the reverse-scroll jump associated with opening and closing the gallery; final browser/device behavior still needs checking on the installed page.
+
+## Speed and timing
+
+Edit `config.js` for section `screens`, `start`, and `end`, laptop entrance, book fade, webpage movement, and drone flashes. Larger screens means more scrolling and slower progress. These are scroll fractions, not seconds. The iframe stays 100vh while the long sequence scrolls internally.
+
+Assets in models/images/vendor are included locally. Photography, branding background, and video retain their original public Wix-hosted media URLs and need to remain available.
+
+## Test checklist
+
+- No duplicate Wix navbar or spacer appears above the embedded nav.
+- Hero icon loads; Our Work dropdown and nested photography menu work.
+- Book/laptop transition and drone sequence progress in both scroll directions.
+- Open a gallery, change slides, close it, and scroll back up. You should return to the saved gallery position.
+- The lightbox starts below the embedded navbar at desktop/mobile widths.
+- Click Let's Elevate at the hero and from later sections. Both should move to the native Wix contact form.
+- Test scrolling beyond Our Mission and back from the contact section.
+- Test on a real phone in portrait and landscape.
+
+If Let's Elevate does not move the page, check the HTML embed ID, CONTACT section ID, home page code, allowed Wix origin, and GitHub URL. Setting a URL fragment such as `#contactSection` in a Link field is not the same as assigning a Wix element ID.
+
+## Verification limits
+
+JavaScript syntax, local asset references, simulated contact messaging, and gallery scroll-state restoration are checked. Actual published Wix layout, WebGL rendering, header removal, browser touch behavior, and contact navigation must be verified after installation. No GitHub or Wix publication was performed.

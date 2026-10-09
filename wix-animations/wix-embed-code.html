@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden}iframe{width:100%;height:100%;border:0;display:block}</style></head><body>
+<iframe id="animation" title="C2 Design Group animated portfolio" src="https://dan-c2dg.github.io/c2-design-group-site/wix-animations/index.html" allow="autoplay; fullscreen"></iframe>
+<script>
+(() => {
+ const frame=document.getElementById('animation'),childOrigin=new URL(frame.src).origin;
+ const allowedWixOrigins=['https://creative-c2dg.wixstudio.com']; // Add your custom domain here when connected.
+ const channel='c2dg-animation-v1';let outerOrigin=null,init=null;
+ const toWix=data=>{if(outerOrigin)parent.postMessage(data,outerOrigin);else allowedWixOrigins.forEach(origin=>parent.postMessage(data,origin));};
+ const toChild=data=>frame.contentWindow.postMessage(data,childOrigin);
+ addEventListener('message',e=>{
+  const data=e.data;if(data?.channel!==channel)return;
+  if(e.source===frame.contentWindow&&e.origin===childOrigin){
+   if(data.type==='READY'&&init)toChild(init);
+   toWix(data);return;
+  }
+  if(e.source===parent&&allowedWixOrigins.includes(e.origin)){
+   outerOrigin=e.origin;if(data.type==='INIT')init=data;
+   toChild(data);
+  }
+ });
+ frame.addEventListener('load',()=>{if(init)toChild(init);toWix({channel,type:'READY'});});
+})();
+</script></body></html>

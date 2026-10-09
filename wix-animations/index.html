@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C2DG Animated Sections</title><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script><script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script></head><body><nav class="embedded-nav" aria-label="Primary navigation">
+ <a class="embedded-brand" href="#hero" data-section="hero" aria-label="C2 Design Group home"><img src="images/c2dg_icon_rgb-color-rev.svg" alt="C2 Design Group" width="48" height="40"></a>
+ <button type="button" id="embedNavToggle" aria-controls="embedNavLinks" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+ <div id="embedNavLinks" class="embedded-links">
+  <details class="embedded-work"><summary>Our Work</summary><div class="embedded-dropdown">
+   <a href="#our-work" data-section="our-work">Work Overview</a>
+   <a href="#branding" data-section="branding">Branding</a>
+   <a href="#design-flipbook" data-section="design-flipbook">Print &amp; Digital Media</a>
+   <a href="#drone" data-section="drone">Certified Drone</a>
+   <details class="embedded-photo"><summary>Photography</summary><div class="embedded-photo-menu">
+    <a href="#photography" data-section="photography">Photography Overview</a>
+    <a href="#photography-aerials" data-section="photography-aerials">Aerials</a>
+    <a href="#photography-architecture" data-section="photography-architecture">Architecture</a>
+    <a href="#photography-people" data-section="photography-people">People</a>
+    <a href="#photography-events-products" data-section="photography-events-products">Events + Products</a>
+   </div></details>
+   <a href="#videography" data-section="videography">Videography</a>
+  </div></details>
+  <a href="#our-story" data-section="our-story">Our Story</a>
+  <a href="#our-mission" data-section="our-mission">Our Mission</a>
+  <a class="embedded-cta" href="#contact" data-contact>Let's Elevate</a>
+ </div>
+</nav><div id="embedStatus" role="status" aria-live="polite" hidden></div>
+<section id="hero" class="full-section hero"><div class="motion-stage">
+  <canvas id="webgl"></canvas>
+  <div id="loading">Loading 3D experience…</div>
+  <div class="hero-copy">
+    <p class="eyebrow">C2 Design Group • Creative Design & Media</p>
+    <h1>Ideas<br>in motion.</h1>
+    <p>Strategic branding, print and digital media, professional photography, certified drone capabilities, and motion content designed to make brands and projects stand out.</p>
+  </div>
+  <div class="scroll-hint">Scroll to explore ↓</div>
+</div></section>
+<section id="our-work" class="full-section work-intro"><div class="motion-stage">
+  <div class="work-intro-inner">
+    <p class="section-kicker">01 / Our Work</p>
+    <h2>Creative work built to move brands forward.</h2>
+    <p>Explore how C2 Design Group brings together brand strategy, graphic design, print, digital experiences, photography, aerial imagery, and video to create cohesive visual communication.</p>
+  </div>
+</div></section>
+<section id="branding" class="work-chapter chapter">
+  <div class="chapter-bg" style="background-image:linear-gradient(90deg,rgba(30,21,69,.92),rgba(30,21,69,.56) 52%,rgba(30,21,69,.2)),url('https://static.wixstatic.com/media/beab6e_ebe8695f9898450db1bb12536b3788e4f000.jpg');background-position:center;background-size:cover;"></div>
+  <div class="chapter-overlay"></div>
+  <div class="chapter-inner">
+    <div class="chapter-copy reveal">
+      <div class="section-kicker">Our Work — Branding</div>
+      <h2>Make the first impression count.</h2>
+      <p>C2 Design Group develops distinctive brand identities, visual systems, typography, messaging direction, and supporting brand assets that create consistency across every customer touchpoint.</p>
+    </div>
+    <div class="chapter-visual"><div class="chapter-glyph fly-word">C2</div></div>
+  </div>
+</section>
+<section id="design-flipbook" class="flipbook-section">
+  <div class="flip-stage">
+    <div class="flip-grid">
+      <div class="flip-copy">
+        <div class="section-kicker">Our Work — Print & Digital Media</div>
+        <h2>Designed for screen and paper.</h2>
+        <p>From brochures, books, business cards, presentations, campaigns, and print collateral to responsive digital experiences, C2 creates polished communication systems that work across formats.</p>
+        <div class="flip-badge">Editorial Design • Print • Digital Experiences</div>
+      </div>
+    </div>
+    <div id="flipbook-stack" aria-label="Scroll-controlled print portfolio">
+      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page1.png" alt="C2DG print design portfolio page"><span class="page-number">Print 01</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page2.png" alt="C2DG editorial design portfolio page"><span class="page-number">Print 02</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page3.png" alt="C2DG print portfolio page"><span class="page-number">Print 03</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page4.png" alt="C2DG design portfolio page"><span class="page-number">Print 04</span></div>
+    </div>
+    <div id="digital-device" aria-hidden="true">
+      <div class="device-shell"><div class="device-screen"><img id="digital-screen-image" loading="eager" decoding="async" src="images/AAA-website.png" alt=""></div></div><div class="device-base"></div>
+    </div>
+    <div class="digital-caption" id="digitalCaption">Digital experience • Web design</div>
+    <div class="flip-page-label" id="flipPageLabel">Scroll to turn pages ↓</div>
+    <div class="flip-progress"><span id="flipProgress"></span></div>
+  </div>
+</section>
+<section id="drone" class="photo-section">
+  <div class="photo-stage">
+    <div class="photo-bg" id="photoBg"></div>
+    <div class="photo-sky" id="photoSky"></div>
+    <div class="photo-vignette"></div>
+    <canvas id="drone-webgl"></canvas>
+    <div id="drone-loading">Loading aerial experience…</div>
+    <div class="photo-copy">
+      <p class="section-kicker">Our Work — Photography • Certified Drone Capabilities</p>
+      <h2>See the whole picture.</h2>
+      <p>C2 Design Group combines professional photography with the expertise and licensing necessary to produce aerial photography and video, giving properties, developments, businesses, and projects a powerful visual perspective.</p>
+      <div class="photo-badge">Aerial Photography • Property Documentation • Marketing Imagery</div>
+    </div>
+    <div class="capture-flash" id="captureFlash" aria-hidden="true"></div>
+    <div class="photo-progress"><span id="droneProgress"></span></div>
+    <div class="scroll-hint">Scroll to fly ↓</div>
+  </div>
+</section>
+<section id="photography" class="photo-gallery-section" aria-labelledby="photography-title">
+  <div class="photo-gallery-shell">
+    <div class="photo-gallery-intro"><div><p class="section-kicker">Our Work — Photography</p><h2 id="photography-title">See it<br>differently.</h2></div><p>Explore four distinct C2DG photography disciplines. Click any category to open a full-screen gallery, then use the arrows, keyboard, or swipe gestures to move through the work.</p></div>
+    <div class="photo-gallery" role="list">
+      <button class="photo-tile photo-tile-wide" type="button" role="listitem" data-gallery="aerials"><img src="https://static.wixstatic.com/media/beab6e_85c124f713574e499860d4a4333921a8~mv2.jpg" alt="C2DG aerial photography" loading="lazy"><span><b>01</b>Aerials</span></button>
+      <button class="photo-tile photo-tile-tall" type="button" role="listitem" data-gallery="architecture"><img src="https://static.wixstatic.com/media/4f980b_54d12d6345aa4aea9ac765861fad02dd~mv2.jpg" alt="C2DG architecture photography" loading="lazy"><span><b>02</b>Architecture</span></button>
+      <button class="photo-tile" type="button" role="listitem" data-gallery="events"><img src="https://static.wixstatic.com/media/47f173_5522417e60a44dd39e4e39ea4421d6c3~mv2.jpg" alt="C2DG events and products photography" loading="lazy"><span><b>03</b>Events + Products</span></button>
+      <button class="photo-tile" type="button" role="listitem" data-gallery="people"><img src="https://static.wixstatic.com/media/47f173_5ef293983bf446c9adc645a702a4eef8~mv2.jpg" alt="C2DG people photography" loading="lazy"><span><b>04</b>People</span></button>
+    </div>
+    <div class="photo-gallery-note">Click a discipline to open the full gallery • Swipe on touch devices • ← / → on keyboard</div>
+  </div>
+</section>
+<section id="videography" class="work-chapter chapter chapter-video video-chapter">
+  <div class="video-bg-wrap" aria-hidden="true">
+    <video id="c2VideoBg" class="video-bg" autoplay muted loop playsinline preload="metadata" poster="https://static.wixstatic.com/media/4f980b_82b336c376e847e99be6180b9d1a1365f000.jpg">
+      <!-- Replace VIDEO_URL in the script below with the direct C2DG/Wix MP4 URL. -->
+    </video>
+    <div class="video-fallback"></div>
+  </div>
+  <div class="chapter-bg video-color-wash"></div>
+  <div class="chapter-overlay"></div>
+  <div class="chapter-inner">
+    <div class="chapter-copy reveal">
+      <div class="section-kicker">Our Work — Videography</div>
+      <h2>Give the story a pulse.</h2>
+      <p>Brand films, property videos, project documentation, social content, and motion graphics help audiences understand not just what you do, but why it matters.</p>
+    </div>
+    <div class="chapter-visual video-control-wrap">
+      <button id="c2VideoToggle" class="video-control" type="button" aria-label="Pause background video" aria-pressed="false">
+        <span class="video-control-icon" aria-hidden="true">Ⅱ</span>
+        <span class="video-control-label">PAUSE</span>
+      </button>
+    </div>
+  </div>
+</section>
+<section id="our-story" class="full-section standard"><div class="motion-stage">
+  <div class="standard-inner">
+    <div>
+      <p class="section-kicker">02 / Our Story</p>
+      <h2>Keep good ideas rolling.</h2>
+    </div>
+    <div>
+      <p>C2 Design Group keeps ideas rolling—from the first spark of a concept to the final piece that reaches an audience. Our approach connects strategy, identity, production, photography, and motion so the story keeps moving.</p>
+      <p>We believe the best creative work has momentum. It should be distinctive enough to be remembered, practical enough to be used, and built to carry an idea forward across every medium.</p>
+      <div class="story-mark" aria-hidden="true">C2</div>
+    </div>
+  </div>
+</div></section>
+<section id="our-mission" class="full-section standard dark"><div class="motion-stage">
+  <div class="standard-inner">
+    <div>
+      <p class="section-kicker">03 / Our Mission</p>
+      <h2>Elevate the way your story is seen.</h2>
+    </div>
+    <div>
+      <p>Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p>
+      <p>Whether the need is a new identity, a marketing campaign, aerial photography, a digital experience, or a complete visual content system, C2 Design Group creates work designed to move people and projects forward.</p>
+      <div class="mission-mark" aria-hidden="true">↗</div>
+    </div>
+  </div>
+</div></section>
+<div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
+  <button class="photo-lightbox-close" type="button" aria-label="Close photography viewer">×</button>
+  <button class="photo-lightbox-arrow photo-lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+  <img id="photoLightboxImage" src="" alt="">
+  <button class="photo-lightbox-arrow photo-lightbox-next" type="button" aria-label="Next photo">›</button>
+  <div class="photo-lightbox-meta"><span class="photo-lightbox-title" id="photoLightboxTitle"></span><span class="photo-lightbox-count" id="photoLightboxCount"></span></div>
+  <div class="photo-lightbox-dots" id="photoLightboxDots"></div>
+</div>
+<script src="assets/bridge.js"></script><script src="assets/navigation.js"></script><script type="module" src="assets/animations.js"></script></body></html>

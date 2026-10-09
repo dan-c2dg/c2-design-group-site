@@ -1,0 +1,9 @@
+2026-10-08 — v3
+PASS: syntax of navigation, bridge, animation module, Wix page code.
+PASS: one embedded navbar; no embedded form/footer or Previous/Next controls.
+PASS: local asset references and embedded navigation targets.
+PASS simulated CTA before handshake and contact acknowledgement.
+PASS simulated native Wix contact scrollTo, positive reply, duplicate suppression.
+PASS actual gallery function simulation: scroll restoration, overflow cleanup, focus preventScroll.
+NOT VERIFIED: visual layout, WebGL runtime, real touch scroll, actual published Wix CONTACT bridge.
+No deployment performed. Follow START-HERE.md and test published Wix page.

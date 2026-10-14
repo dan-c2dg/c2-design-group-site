@@ -360,38 +360,6 @@ section{scroll-margin-top:0}
   </div>
 </section>
 
-<section id="contact" class="full-section contact">
-  <div class="contact-inner">
-    <p class="section-kicker">04 / Let's Elevate</p>
-    <h2>Have a project<br>worth elevating?</h2>
-    <p class="contact-intro">Tell us what you are building, launching, photographing, filming, or rethinking. C2 Design Group can help shape the visual strategy and create the assets that bring it to life.</p>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks — your project inquiry is ready to connect.');">
-      <input aria-label="Name" name="name" placeholder="Name" required>
-      <input aria-label="Email" type="email" name="email" placeholder="Email" required>
-      <input aria-label="Company" name="company" placeholder="Company">
-      <input aria-label="Project type" name="project" placeholder="Project type">
-      <textarea aria-label="Project details" name="message" placeholder="Tell us about your project"></textarea>
-      <button class="form-submit" type="submit">Let's Elevate ↗</button>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <h2>Make the idea<br>impossible to miss.</h2>
-      <a class="nav-cta" href="#contact">Let's Elevate ↗</a>
-    </div>
-    <div class="footer-grid">
-      <div><h3>C2 Design Group</h3><p style="max-width:290px;line-height:1.6;opacity:.5;font-size:14px">Branding, print and digital media, photography, certified drone capabilities, and motion content for brands and projects that want to move forward.</p></div>
-      <div><h3>Explore</h3><a href="#hero">Home</a><a href="#our-work">Our Work</a><a href="#our-story">Our Story</a><a href="#our-mission">Our Mission</a></div>
-      <div><h3>Capabilities</h3><a href="#branding">Branding</a><a href="#design-flipbook">Print & Digital</a><a href="#photography">Photography</a><a href="#videography">Videography</a></div>
-      <div><h3>Start a Project</h3><a href="#contact">Let's Elevate</a><a href="#contact">Contact C2</a></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 C2 Design Group</span><span>Branding • Digital • Photography • Video</span></div>
-  </div>
-</footer>
-
 <script type="importmap">
 {
   "imports": {
@@ -617,12 +585,12 @@ const nav=document.querySelector('.site-nav'),navToggle=document.querySelector('
 function updateNavOffset(){const h=nav?.getBoundingClientRect().height||70;document.documentElement.style.setProperty('--nav-offset',`${h}px`)}
 updateNavOffset();addEventListener('resize',updateNavOffset);
 function navigateToHash(hash){const target=document.querySelector(hash);if(!target)return;const navH=nav?.getBoundingClientRect().height||70;const top=target.getBoundingClientRect().top+scrollY;document.documentElement.style.scrollSnapType='none';window.scrollTo({top,behavior:'smooth'});setTimeout(()=>{document.documentElement.style.scrollSnapType=innerWidth>760?'y proximity':'none'},700)}
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const hash=a.getAttribute('href');if(hash==='#')return;e.preventDefault();navigateToHash(hash);history.pushState(null,'',hash);navLinks?.classList.remove('is-open');navWork?.classList.remove('is-open');nav?.classList.remove('nav-expanded');navToggle?.setAttribute('aria-expanded','false')}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const hash=a.getAttribute('href');if(hash==='#')return;e.preventDefault();if(hash==='#contact'){window.parent.postMessage({channel:'c2dg-animation-v1',type:'CONTACT'},'*');navLinks?.classList.remove('is-open');navWork?.classList.remove('is-open');nav?.classList.remove('nav-expanded');navToggle?.setAttribute('aria-expanded','false');return;}navigateToHash(hash);history.pushState(null,'',hash);navLinks?.classList.remove('is-open');navWork?.classList.remove('is-open');nav?.classList.remove('nav-expanded');navToggle?.setAttribute('aria-expanded','false')}));
 navToggle?.addEventListener('click',()=>{const open=navLinks.classList.toggle('is-open');navToggle.setAttribute('aria-expanded',String(open))});
 navWork?.addEventListener('mouseenter',()=>{navWork.querySelector('.work-menu')?.classList.remove('is-fading')});
 /* submenu labels can land on the same photography section and open the relevant gallery */
 document.querySelectorAll('.work-submenu-list a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const map={'#photography-architecture':'architecture','#photography-aerials':'aerials','#photography-people':'people','#photography-events-products':'events'};navigateToHash('#photography');history.pushState(null,'','#photography');setTimeout(()=>openGallery(map[a.getAttribute('href')]),650)}));
-window.addEventListener('load',()=>{updateNavOffset();if(location.hash){setTimeout(()=>navigateToHash(location.hash),80)}});
+window.addEventListener('load',()=>{updateNavOffset();if(location.hash&&location.hash!=='#contact'){setTimeout(()=>navigateToHash(location.hash),80)}});
 
 /* Videography background video */
 const VIDEO_URL = 'https://video.wixstatic.com/video/47f173_c6e8c68c65244c438dab9c88472930d7/1080p/mp4/file.mp4';

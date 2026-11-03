@@ -271,6 +271,35 @@ section{scroll-margin-top:0}
 @media(max-width:768px){
   .hero-copy{width:min(540px,calc(100% - 2 * var(--c2-gutter)))!important}
 }
+
+/* V15 — one 1280px centered composition rail for copy AND animated objects.
+   Only photographic/video backgrounds remain full bleed. */
+:root{--c2-content-max:1280px;--c2-gutter:clamp(18px,3.5vw,40px);--c2-rail:min(1280px,calc(100% - 2 * var(--c2-gutter)));--c2-edge:max(var(--c2-gutter),calc((100% - 1280px)/2))}
+.hero-copy,.photo-copy{left:var(--c2-edge)!important;text-align:left!important}
+.hero-copy{width:min(570px,calc(var(--c2-rail) * .46))!important;right:auto!important}
+.work-intro,.standard,.contact,.photo-gallery-section,.footer{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.chapter-inner,.flip-grid{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.work-intro-inner,.standard-inner,.contact-inner,.footer-inner,.photo-gallery-shell{max-width:1280px!important}
+.chapter-copy,.flip-copy{width:min(570px,calc(var(--c2-rail) * .48))!important;max-width:100%!important}
+.photo-copy{width:min(570px,calc(var(--c2-rail) * .48))!important}
+#flipbook-stack{right:var(--c2-edge)!important;width:min(480px,calc(var(--c2-rail) * .40))!important}
+#digital-device{right:var(--c2-edge)!important;width:min(530px,calc(var(--c2-rail) * .44))!important}
+.chapter-visual{right:var(--c2-edge)!important;width:min(340px,calc(var(--c2-rail) * .28))!important}
+/* WebGL drawings are bounded by the same rail; the 3D logo stays right of copy. */
+#webgl{left:auto!important;right:var(--c2-edge)!important;top:0!important;width:calc(var(--c2-rail) * .55)!important;height:100%!important}
+#drone-webgl{left:var(--c2-edge)!important;right:auto!important;top:0!important;width:var(--c2-rail)!important;height:100%!important}
+@media(max-width:900px){
+ .hero-copy,.photo-copy,.chapter-copy,.flip-copy{width:min(540px,calc(100% - 2 * var(--c2-gutter)))!important}
+ #webgl{width:calc(var(--c2-rail) * .58)!important;opacity:.8}
+}
+@media(max-width:768px){
+ .flip-grid{grid-template-columns:1fr!important}
+ .flip-copy{width:100%!important}
+ #flipbook-stack{width:min(470px,calc(var(--c2-rail) * .82))!important}
+ #digital-device{width:min(500px,calc(var(--c2-rail) * .82))!important}
+ #webgl{width:var(--c2-rail)!important;right:var(--c2-edge)!important;opacity:.55}
+ .hero-copy{z-index:6}
+}
 </style>
 </head>
 
@@ -473,13 +502,13 @@ const canvas = document.querySelector('#webgl');
 const loading = document.querySelector('#loading');
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
-renderer.setSize(innerWidth,innerHeight);
+renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(25,innerWidth/innerHeight,.1000,1000);
+const camera = new THREE.PerspectiveCamera(25,canvas.clientWidth/canvas.clientHeight,.1000,1000);
 camera.position.set(20,5,20);
 camera.lookAt(0,3,0);
 scene.add(new THREE.HemisphereLight(0xffffff,0x202530,10));
@@ -516,7 +545,7 @@ function updateHero(){
 }
 addEventListener('scroll',updateHero,{passive:true});
 addEventListener('resize',()=>{
-  renderer.setSize(innerWidth,innerHeight); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(canvas.clientWidth,canvas.clientHeight,false); camera.aspect=canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix();
 });
 function renderHero(){
   renderer.render(scene,camera);
@@ -574,8 +603,8 @@ addEventListener('scroll',updateFlipbook,{passive:true});addEventListener('resiz
 ========================================================= */
 const photoSection=document.querySelector('#drone');
 const photoBg=document.querySelector('#photoBg');const photoSky=document.querySelector('#photoSky');const droneCanvas=document.querySelector('#drone-webgl');const droneLoading=document.querySelector('#drone-loading');const captureFlash=document.querySelector('#captureFlash');const droneProgress=document.querySelector('#droneProgress');
-const droneRenderer=new THREE.WebGLRenderer({canvas:droneCanvas,antialias:true,alpha:true,powerPreference:'high-performance'});droneRenderer.setPixelRatio(Math.min(devicePixelRatio,1.5));droneRenderer.setSize(innerWidth,innerHeight);droneRenderer.outputColorSpace=THREE.SRGBColorSpace;droneRenderer.toneMapping=THREE.ACESFilmicToneMapping;droneRenderer.toneMappingExposure=1.2;
-const droneScene=new THREE.Scene();const droneCamera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.01,1000);droneCamera.position.set(0,1.4,18);droneCamera.lookAt(0,1.4,0);droneScene.add(new THREE.HemisphereLight(0xffffff,0x23313a,2.6));const dk=new THREE.DirectionalLight(0xffffff,4);dk.position.set(6,10,7);droneScene.add(dk);const df=new THREE.DirectionalLight(0x79a9c2,1.8);df.position.set(-7,4,-5);droneScene.add(df);
+const droneRenderer=new THREE.WebGLRenderer({canvas:droneCanvas,antialias:true,alpha:true,powerPreference:'high-performance'});droneRenderer.setPixelRatio(Math.min(devicePixelRatio,1.5));droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneRenderer.outputColorSpace=THREE.SRGBColorSpace;droneRenderer.toneMapping=THREE.ACESFilmicToneMapping;droneRenderer.toneMappingExposure=1.2;
+const droneScene=new THREE.Scene();const droneCamera=new THREE.PerspectiveCamera(42,droneCanvas.clientWidth/droneCanvas.clientHeight,.01,1000);droneCamera.position.set(0,1.4,18);droneCamera.lookAt(0,1.4,0);droneScene.add(new THREE.HemisphereLight(0xffffff,0x23313a,2.6));const dk=new THREE.DirectionalLight(0xffffff,4);dk.position.set(6,10,7);droneScene.add(dk);const df=new THREE.DirectionalLight(0x79a9c2,1.8);df.position.set(-7,4,-5);droneScene.add(df);
 const flightGroup=new THREE.Group();droneScene.add(flightGroup);let droneRoot=null,droneReady=false,droneRotors=[];const DRONE_MODEL_URL='./models/drone.glb';
 new GLTFLoader().load(DRONE_MODEL_URL,gltf=>{droneRoot=gltf.scene;droneRoot.scale.setScalar(1.0);/* model correction: rotate the aircraft so rotor discs are horizontal */droneRoot.rotation.x=Math.PI/2;flightGroup.add(droneRoot);droneRoot.traverse(o=>{if(/^ROTOR_/.test(o.name))droneRotors.push(o)});droneReady=true;droneLoading.style.display='none';updateDrone()},xhr=>{if(xhr.total)droneLoading.textContent='Loading aerial experience… '+Math.round(xhr.loaded/xhr.total*100)+'%'},e=>{console.error(e);droneLoading.textContent='Place drone.glb in ./models/'});
 function droneProgressValue(){const r=photoSection.getBoundingClientRect();const travel=photoSection.offsetHeight-innerHeight;return travel>0?THREE.MathUtils.clamp(-r.top/travel,0,1):0}
@@ -584,7 +613,7 @@ function updateDrone(){
   const p=droneProgressValue();if(!droneReady)return;
   const points=[[9,1.2,4.4],[6.1,.8,3.9],[2.7,.55,3.55],[-1.4,.7,3.35],[-5,.15,3.95],[-1.7,.45,3.35],[2.6,.8,3.65],[6.2,1.0,4],[9,1.2,4.4]];
   const scaled=p*(points.length-1),i=Math.min(Math.floor(scaled),points.length-2),t=scaled-i,e=t*t*(3-2*t),a=points[i],b=points[i+1];
-  flightGroup.position.set(THREE.MathUtils.lerp(a[0],b[0],e),THREE.MathUtils.lerp(a[1],b[1],e),THREE.MathUtils.lerp(a[2],b[2],e));
+  flightGroup.position.set(THREE.MathUtils.clamp(THREE.MathUtils.lerp(a[0],b[0],e),-5.0,5.0),THREE.MathUtils.lerp(a[1],b[1],e),THREE.MathUtils.lerp(a[2],b[2],e));
   const dx=b[0]-a[0],dy=b[1]-a[1];
   flightGroup.rotation.set(THREE.MathUtils.clamp(dy*.035,-.10,.10),THREE.MathUtils.clamp(dx*.014,-.12,.12),THREE.MathUtils.clamp(-dx*.024,-.20,.20));
   const spin=performance.now()*.035;droneRotors.forEach((r,n)=>r.rotation.z=spin*(n%2?-1:1));
@@ -608,7 +637,7 @@ function updateDrone(){
   }
   droneProgress.style.width=(p*100)+'%';
 }
-addEventListener('scroll',updateDrone,{passive:true});addEventListener('resize',()=>{droneRenderer.setSize(innerWidth,innerHeight);droneCamera.aspect=innerWidth/innerHeight;droneCamera.updateProjectionMatrix();updateDrone()});function renderDrone(){droneRenderer.render(droneScene,droneCamera);requestAnimationFrame(renderDrone)}renderDrone();
+addEventListener('scroll',updateDrone,{passive:true});addEventListener('resize',()=>{droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false)droneCamera.aspect=droneCanvas.clientWidth/droneCanvas.clientHeight;droneCamera.updateProjectionMatrix();updateDrone()});function renderDrone(){droneRenderer.render(droneScene,droneCamera);requestAnimationFrame(renderDrone)}renderDrone();
 
 /* =========================================================
    OUR STORY / OUR MISSION — SCROLL MOTION

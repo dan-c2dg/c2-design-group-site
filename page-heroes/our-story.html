@@ -14,6 +14,10 @@
 @media (max-width:768px){.layout{width:calc(100% - 48px);height:100%;min-height:0;display:flex;align-items:center;padding-top:0;padding-bottom:0}.copy{max-width:92%}.copy h1{font-size:clamp(42px,8vw,72px)}.copy p{font-size:clamp(14px,2.1vw,17px)}}
 @media (max-width:390px){.layout{width:calc(100% - 36px);height:100%;min-height:0;align-items:center;padding-top:0;padding-bottom:0}.copy{max-width:100%}.copy h1{font-size:clamp(38px,11.5vw,49px)}.copy p{font-size:14px;line-height:1.45}}
 @media(max-height:600px){.copy h1{font-size:clamp(35px,5.5vw,65px)}.copy p{font-size:14px;line-height:1.35}}
+
+/* V7: vertically center headline and supporting copy on every breakpoint */
+.content{height:100%;display:flex;align-items:center!important;padding-top:0!important;padding-bottom:0!important}
+.content .copy{margin-top:0!important;margin-bottom:0!important}
 </style></head><body data-page="our-story"><main class="hero" style="--p:0" aria-label="Our Story animated introduction"><div class="grain"></div><div class="art art-story" aria-hidden="true"><div class="story-ring ring1"></div><div class="story-ring ring2"></div><div class="story-ring ring3"></div><div class="story-arrow">↗</div></div><div class="content"><div class="copy"><div class="eyebrow">C2 DESIGN GROUP / OUR STORY</div><h1>Keep ideas rolling.</h1><p>Creative thinking with momentum behind it.</p></div></div><div class="micro">CREATIVE DESIGN &amp; MEDIA <span style="color:#00BAB4">●</span></div><div class="side-label">IDEAS IN MOTION</div><div class="progress"></div></main><script>
 (()=>{const root=document.querySelector('.hero'),alt=document.querySelector('#altitude'),tc=document.querySelector('#timecode');let p=0, external=false, last=performance.now(), start=last;const clamp=n=>Math.max(0,Math.min(1,n));function paint(n){p=clamp(n);root.style.setProperty('--p',p.toFixed(4));if(alt)alt.textContent=String(Math.round(120+380*p));if(tc)tc.textContent=String(Math.round(p*24)).padStart(2,'0')};paint(0);
 // Standalone: scroll within the hosted HTML; embedded: optional parent scroll-progress messages.

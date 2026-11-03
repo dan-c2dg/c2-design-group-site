@@ -195,6 +195,82 @@ section{scroll-margin-top:0}
 .photo-gallery-section,.footer{padding-left:var(--c2-gutter)!important;padding-right:var(--c2-gutter)!important}
 @media(max-width:760px){.hero-copy,.photo-copy{right:var(--c2-gutter)!important}}
 
+
+/* C2DG HOMEPAGE V11 — unified content widths and CTA system */
+:root{--c2-content-max:1280px;--c2-gutter:48px}
+.c2-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:max-content;max-width:100%;min-height:44px;margin-top:26px;padding:14px 22px;border:0;border-radius:999px;background:var(--c2-pink);color:#fff!important;font-size:11px;font-weight:700;letter-spacing:.09em;line-height:1.35;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;position:relative;z-index:20;pointer-events:auto}
+.c2-cta:after{content:'↗';font-size:17px;font-weight:400;line-height:1}
+.c2-cta:hover{background:#c91c46;transform:translateY(-2px);box-shadow:0 12px 28px rgba(238,38,82,.24)}
+.c2-cta:focus-visible{outline:3px solid var(--c2-teal);outline-offset:4px}
+.hero-copy,.chapter-copy,.flip-copy,.photo-copy{width:min(100%,720px);max-width:min(100%,720px)}
+.hero-copy{left:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important;right:auto!important;width:min(720px,calc(100% - 2*var(--c2-gutter)))!important}
+.chapter-inner,.flip-grid{padding-left:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important;padding-right:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important}
+.photo-copy{left:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important;right:auto!important;width:min(650px,calc(100% - 2*var(--c2-gutter)))!important}
+.work-intro,.standard,.contact,.photo-gallery-section,.footer{padding-left:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important;padding-right:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))!important}
+.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(48px,5.5vw,92px);line-height:.95;overflow-wrap:normal}
+.hero-copy p:last-child,.work-intro p,.chapter-copy p,.flip-copy p,.photo-copy p,.standard p,.photo-gallery-intro>p{font-size:clamp(16px,1.25vw,19px);line-height:1.5}
+.chapter-copy p,.flip-copy p,.photo-copy p{margin-top:20px}
+.chapter-copy .c2-cta,.flip-copy .c2-cta,.photo-copy .c2-cta{margin-top:24px}
+@media(max-width:768px){:root{--c2-gutter:24px}.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(42px,7vw,66px)}.flip-grid{grid-template-columns:1fr!important}.flip-copy{align-self:start;margin-top:10vh;max-width:520px}.chapter-inner{align-items:center}.chapter-copy{max-width:min(560px,100%)}.photo-copy{top:16%;transform:none}.standard-inner{gap:28px}.c2-cta{font-size:10px;padding:13px 18px}}
+@media(max-width:390px){:root{--c2-gutter:18px}.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(35px,10.5vw,43px);line-height:1.02}.hero-copy p:last-child,.work-intro p,.chapter-copy p,.flip-copy p,.photo-copy p,.standard p,.photo-gallery-intro>p{font-size:14px;line-height:1.45}.chapter-copy p,.flip-copy p,.photo-copy p{margin-top:14px}.c2-cta{font-size:9px;min-height:42px;padding:12px 15px;letter-spacing:.04em;margin-top:18px}.flip-copy{margin-top:8vh}.photo-copy{top:12%}}
+@media(max-height:680px){.chapter h2,.flip-copy h2,.photo-copy h2{font-size:clamp(34px,4.4vw,68px)}.chapter-copy p,.flip-copy p,.photo-copy p{font-size:14px;line-height:1.4;margin-top:12px}.c2-cta{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.c2-cta{transition:none}}
+
+/* V12 — align the readable content to the visible Wix navigation rail.
+   Wix's pill is narrower than the 1280px page breakpoint. */
+:root{--c2-content-max:1222px;--c2-gutter:24px;--c2-rail: min(var(--c2-content-max),calc(100% - 2 * var(--c2-gutter)));--c2-edge:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))}
+.hero-copy{left:var(--c2-edge)!important;right:auto!important;width:min(610px,calc(var(--c2-rail) * .57))!important;max-width:100%!important}
+.work-intro,.standard,.contact,.photo-gallery-section,.footer{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.work-intro-inner,.standard-inner,.contact-inner,.footer-inner,.photo-gallery-shell{max-width:var(--c2-content-max)!important;margin-inline:auto!important}
+.chapter-inner,.flip-grid{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.chapter-copy,.flip-copy{width:min(100%,570px)!important;max-width:570px!important}
+.photo-copy{left:var(--c2-edge)!important;right:auto!important;width:min(570px,calc(var(--c2-rail) * .52))!important;max-width:100%!important}
+#flipbook-stack{right:var(--c2-edge)!important;width:min(39vw,480px)!important}
+#digital-device{right:var(--c2-edge)!important;width:min(42vw,530px)!important}
+.chapter-visual{right:var(--c2-edge)!important;width:min(28vw,340px)!important}
+.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(44px,5vw,78px)!important;line-height:.96!important}
+.work-intro h2{max-width:900px!important}
+.chapter-copy p,.flip-copy p,.photo-copy p,.hero-copy p:last-child{max-width:550px!important}
+@media(max-width:1280px){:root{--c2-content-max:1222px;--c2-gutter:32px}}
+@media(max-width:900px){
+ :root{--c2-gutter:24px}
+ .hero-copy,.photo-copy{width:min(540px,calc(100% - 2 * var(--c2-gutter)))!important}
+ .chapter-copy,.flip-copy{max-width:min(520px,100%)!important}
+ #flipbook-stack{right:var(--c2-gutter)!important;width:min(45vw,420px)!important}
+ .chapter-visual{right:var(--c2-gutter)!important}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(40px,6.3vw,62px)!important}
+}
+@media(max-width:768px){
+ .flip-grid{grid-template-columns:1fr!important}
+ .flip-copy{margin-top:9vh!important}
+ #flipbook-stack{left:auto!important;right:var(--c2-gutter)!important;width:min(74vw,470px)!important;top:68%!important}
+ #digital-device{right:var(--c2-gutter)!important;width:min(78vw,500px)!important;top:72%!important}
+ .photo-copy{top:15%!important;transform:none!important}
+ .chapter-visual{width:170px!important;opacity:.28}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(39px,7.2vw,57px)!important}
+}
+@media(max-width:390px){
+ :root{--c2-gutter:18px}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(34px,10vw,42px)!important}
+ .flip-copy{margin-top:7vh!important}
+}
+/* V14: Keep the original left-copy / right-3D composition, inside the
+   same centered 1222px rail as the native Wix navigation. */
+:root{--c2-content-max:1222px}
+.hero-copy{
+  left:var(--c2-edge)!important;
+  right:auto!important;
+  width:min(610px,calc(var(--c2-rail) * .50))!important;
+  max-width:610px!important;
+  transform:translateY(-50%)!important;
+  text-align:left!important;
+}
+.hero-copy p:last-child{margin-left:0!important;margin-right:0!important}
+/* The 3D canvas stays centered in the viewport, which shares the rail's center.
+   No camera, model position, animation, or scrolling behavior is changed. */
+@media(max-width:768px){
+  .hero-copy{width:min(540px,calc(100% - 2 * var(--c2-gutter)))!important}
+}
 </style>
 </head>
 
@@ -243,6 +319,7 @@ section{scroll-margin-top:0}
     <p class="section-kicker">01 / Our Work</p>
     <h2>Creative work built to move brands forward.</h2>
     <p>Explore how C2 Design Group brings together brand strategy, graphic design, print, digital experiences, photography, aerial imagery, and video to create cohesive visual communication.</p>
+      <a class="c2-cta" data-c2-page="work" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-work.html" target="_top" rel="noopener">See how our work elevates</a>
   </div>
 </section>
 
@@ -254,6 +331,7 @@ section{scroll-margin-top:0}
       <div class="section-kicker">Our Work — Branding</div>
       <h2>Make the first impression count.</h2>
       <p>C2 Design Group develops distinctive brand identities, visual systems, typography, messaging direction, and supporting brand assets that create consistency across every customer touchpoint.</p>
+      <a class="c2-cta" data-c2-page="brands" href="https://dan-c2dg.github.io/c2-design-group-site/sections/branding.html" target="_top" rel="noopener">See how we elevate Brands</a>
     </div>
     <div class="chapter-visual"><div class="chapter-glyph fly-word">C2</div></div>
   </div>
@@ -266,7 +344,7 @@ section{scroll-margin-top:0}
         <div class="section-kicker">Our Work — Print & Digital Media</div>
         <h2>Designed for screen and paper.</h2>
         <p>From brochures, books, business cards, presentations, campaigns, and print collateral to responsive digital experiences, C2 creates polished communication systems that work across formats.</p>
-        <div class="flip-badge">Editorial Design • Print • Digital Experiences</div>
+        <a class="c2-cta" data-c2-page="print" href="https://dan-c2dg.github.io/c2-design-group-site/sections/print-digital.html" target="_top" rel="noopener">See how we elevate Print</a>
       </div>
     </div>
     <div id="flipbook-stack" aria-label="Scroll-controlled print portfolio">
@@ -295,7 +373,7 @@ section{scroll-margin-top:0}
       <p class="section-kicker">Our Work — Photography • Certified Drone Capabilities</p>
       <h2>See the whole picture.</h2>
       <p>C2 Design Group combines professional photography with the expertise and licensing necessary to produce aerial photography and video, giving properties, developments, businesses, and projects a powerful visual perspective.</p>
-      <div class="photo-badge">Aerial Photography • Property Documentation • Marketing Imagery</div>
+      <a class="c2-cta" data-c2-page="photography" href="https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html" target="_top" rel="noopener">See how we elevate Photography</a>
     </div>
     <div class="capture-flash" id="captureFlash" aria-hidden="true"></div>
     <div class="photo-progress"><span id="droneProgress"></span></div>
@@ -337,6 +415,7 @@ section{scroll-margin-top:0}
       <div class="section-kicker">Our Work — Videography</div>
       <h2>Give the story a pulse.</h2>
       <p>Brand films, property videos, project documentation, social content, and motion graphics help audiences understand not just what you do, but why it matters.</p>
+      <a class="c2-cta" data-c2-page="videography" href="https://dan-c2dg.github.io/c2-design-group-site/sections/videography.html" target="_top" rel="noopener">See how we elevate Videography</a>
     </div>
     <div class="chapter-visual video-control-wrap">
       <button id="c2VideoToggle" class="video-control" type="button" aria-label="Pause background video" aria-pressed="false">
@@ -592,6 +671,21 @@ function closeGallery(){photoLightbox.classList.remove('is-open');photoLightbox.
 function stepGallery(dir){if(!galleryKey)return;const g=galleries[galleryKey];galleryIndex=(galleryIndex+dir+g.images.length)%g.images.length;renderGallery()}
 document.querySelectorAll('.photo-tile').forEach(tile=>tile.addEventListener('click',()=>openGallery(tile.dataset.gallery)));
 document.querySelector('.photo-lightbox-close')?.addEventListener('click',closeGallery);document.querySelector('.photo-lightbox-prev')?.addEventListener('click',()=>stepGallery(-1));document.querySelector('.photo-lightbox-next')?.addEventListener('click',()=>stepGallery(1));photoLightbox?.addEventListener('click',e=>{if(e.target===photoLightbox)closeGallery()});photoLightboxImage?.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});photoLightboxImage?.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>45)stepGallery(dx<0?1:-1)},{passive:true});document.addEventListener('keydown',e=>{if(!photoLightbox.classList.contains('is-open'))return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowRight')stepGallery(1);if(e.key==='ArrowLeft')stepGallery(-1)});
+
+
+/* CTA destinations — change these URLs to the FINAL Wix page URLs before publishing.
+   Photography is grounded in your existing GitHub section URL; others are provisional paths. */
+const C2_PAGE_URLS = {
+  work: 'https://dan-c2dg.github.io/c2-design-group-site/sections/our-work.html',
+  brands: 'https://dan-c2dg.github.io/c2-design-group-site/sections/branding.html',
+  print: 'https://dan-c2dg.github.io/c2-design-group-site/sections/print-digital.html',
+  photography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html',
+  videography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/videography.html'
+};
+document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
+  const url=C2_PAGE_URLS[link.dataset.c2Page];
+  if(url) link.href=url;
+});
 
 /* =========================================================
    NAV + ANCHORS — dynamic offset and soft-fading Work menu

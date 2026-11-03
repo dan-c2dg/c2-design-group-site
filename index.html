@@ -300,6 +300,11 @@ section{scroll-margin-top:0}
  #webgl{width:var(--c2-rail)!important;right:var(--c2-edge)!important;opacity:.55}
  .hero-copy{z-index:6}
 }
+/* V16: allow interactive hero CTA while retaining the original text/3D layout */
+.hero-copy{pointer-events:auto}
+.photo-gallery-shell>.c2-cta{margin-top:26px}
+.standard-inner .c2-cta{margin-top:16px}
+@media(max-width:768px){.photo-gallery-shell>.c2-cta{margin-top:20px}}
 </style>
 </head>
 
@@ -339,6 +344,7 @@ section{scroll-margin-top:0}
     <p class="eyebrow">C2 Design Group • Creative Design & Media</p>
     <h1>Ideas<br>in motion.</h1>
     <p>Strategic branding, print and digital media, professional photography, certified drone capabilities, and motion content designed to make brands and projects stand out.</p>
+    <a class="c2-cta" data-c2-page="work" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-work.html" target="_top" rel="noopener">Explore what we elevate</a>
   </div>
   <div class="scroll-hint">Scroll to explore ↓</div>
 </section>
@@ -419,6 +425,7 @@ section{scroll-margin-top:0}
       <button class="photo-tile" type="button" role="listitem" data-gallery="events"><img src="https://static.wixstatic.com/media/47f173_5522417e60a44dd39e4e39ea4421d6c3~mv2.jpg" alt="C2DG events and products photography" loading="lazy"><span><b>03</b>Events + Products</span></button>
       <button class="photo-tile" type="button" role="listitem" data-gallery="people"><img src="https://static.wixstatic.com/media/47f173_5ef293983bf446c9adc645a702a4eef8~mv2.jpg" alt="C2DG people photography" loading="lazy"><span><b>04</b>People</span></button>
     </div>
+    <a class="c2-cta" data-c2-page="photography" href="https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html" target="_top" rel="noopener">See how we elevate Photography</a>
     <div class="photo-gallery-note">Click a discipline to open the full gallery • Swipe on touch devices • ← / → on keyboard</div>
   </div>
 </section>
@@ -464,6 +471,7 @@ section{scroll-margin-top:0}
     <div>
       <p>C2 Design Group keeps ideas rolling—from the first spark of a concept to the final piece that reaches an audience. Our approach connects strategy, identity, production, photography, and motion so the story keeps moving.</p>
       <p>We believe the best creative work has momentum. It should be distinctive enough to be remembered, practical enough to be used, and built to carry an idea forward across every medium.</p>
+      <a class="c2-cta" data-c2-page="story" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-story.html" target="_top" rel="noopener">Discover our story</a>
       <div class="story-mark" aria-hidden="true">C2</div>
     </div>
   </div>
@@ -478,6 +486,7 @@ section{scroll-margin-top:0}
     <div>
       <p>Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p>
       <p>Whether the need is a new identity, a marketing campaign, aerial photography, a digital experience, or a complete visual content system, C2 Design Group creates work designed to move people and projects forward.</p>
+      <a class="c2-cta" data-c2-page="mission" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-mission.html" target="_top" rel="noopener">Explore our mission</a>
       <div class="mission-mark" aria-hidden="true">↗</div>
     </div>
   </div>
@@ -709,7 +718,9 @@ const C2_PAGE_URLS = {
   brands: 'https://dan-c2dg.github.io/c2-design-group-site/sections/branding.html',
   print: 'https://dan-c2dg.github.io/c2-design-group-site/sections/print-digital.html',
   photography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html',
-  videography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/videography.html'
+  videography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/videography.html',
+  story: 'https://dan-c2dg.github.io/c2-design-group-site/sections/our-story.html',
+  mission: 'https://dan-c2dg.github.io/c2-design-group-site/sections/our-mission.html'
 };
 document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
   const url=C2_PAGE_URLS[link.dataset.c2Page];

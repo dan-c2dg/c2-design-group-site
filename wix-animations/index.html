@@ -215,6 +215,45 @@ section{scroll-margin-top:0}
 @media(max-width:390px){:root{--c2-gutter:18px}.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(35px,10.5vw,43px);line-height:1.02}.hero-copy p:last-child,.work-intro p,.chapter-copy p,.flip-copy p,.photo-copy p,.standard p,.photo-gallery-intro>p{font-size:14px;line-height:1.45}.chapter-copy p,.flip-copy p,.photo-copy p{margin-top:14px}.c2-cta{font-size:9px;min-height:42px;padding:12px 15px;letter-spacing:.04em;margin-top:18px}.flip-copy{margin-top:8vh}.photo-copy{top:12%}}
 @media(max-height:680px){.chapter h2,.flip-copy h2,.photo-copy h2{font-size:clamp(34px,4.4vw,68px)}.chapter-copy p,.flip-copy p,.photo-copy p{font-size:14px;line-height:1.4;margin-top:12px}.c2-cta{margin-top:14px}}
 @media(prefers-reduced-motion:reduce){.c2-cta{transition:none}}
+
+/* V12 — align the readable content to the visible Wix navigation rail.
+   Wix's pill is narrower than the 1280px page breakpoint. */
+:root{--c2-content-max:1120px;--c2-gutter:24px;--c2-rail: min(var(--c2-content-max),calc(100% - 2 * var(--c2-gutter)));--c2-edge:max(var(--c2-gutter),calc((100% - var(--c2-content-max))/2))}
+.hero-copy{left:var(--c2-edge)!important;right:auto!important;width:min(610px,calc(var(--c2-rail) * .57))!important;max-width:100%!important}
+.work-intro,.standard,.contact,.photo-gallery-section,.footer{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.work-intro-inner,.standard-inner,.contact-inner,.footer-inner,.photo-gallery-shell{max-width:var(--c2-content-max)!important;margin-inline:auto!important}
+.chapter-inner,.flip-grid{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+.chapter-copy,.flip-copy{width:min(100%,570px)!important;max-width:570px!important}
+.photo-copy{left:var(--c2-edge)!important;right:auto!important;width:min(570px,calc(var(--c2-rail) * .52))!important;max-width:100%!important}
+#flipbook-stack{right:var(--c2-edge)!important;width:min(39vw,480px)!important}
+#digital-device{right:var(--c2-edge)!important;width:min(42vw,530px)!important}
+.chapter-visual{right:var(--c2-edge)!important;width:min(28vw,340px)!important}
+.hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(44px,5vw,78px)!important;line-height:.96!important}
+.work-intro h2{max-width:900px!important}
+.chapter-copy p,.flip-copy p,.photo-copy p,.hero-copy p:last-child{max-width:550px!important}
+@media(max-width:1280px){:root{--c2-content-max:1120px;--c2-gutter:32px}}
+@media(max-width:900px){
+ :root{--c2-gutter:24px}
+ .hero-copy,.photo-copy{width:min(540px,calc(100% - 2 * var(--c2-gutter)))!important}
+ .chapter-copy,.flip-copy{max-width:min(520px,100%)!important}
+ #flipbook-stack{right:var(--c2-gutter)!important;width:min(45vw,420px)!important}
+ .chapter-visual{right:var(--c2-gutter)!important}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(40px,6.3vw,62px)!important}
+}
+@media(max-width:768px){
+ .flip-grid{grid-template-columns:1fr!important}
+ .flip-copy{margin-top:9vh!important}
+ #flipbook-stack{left:auto!important;right:var(--c2-gutter)!important;width:min(74vw,470px)!important;top:68%!important}
+ #digital-device{right:var(--c2-gutter)!important;width:min(78vw,500px)!important;top:72%!important}
+ .photo-copy{top:15%!important;transform:none!important}
+ .chapter-visual{width:170px!important;opacity:.28}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(39px,7.2vw,57px)!important}
+}
+@media(max-width:390px){
+ :root{--c2-gutter:18px}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:clamp(34px,10vw,42px)!important}
+ .flip-copy{margin-top:7vh!important}
+}
 </style>
 </head>
 

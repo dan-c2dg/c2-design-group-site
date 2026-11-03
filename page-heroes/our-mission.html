@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our Mission | C2 Design Group</title><meta name="description" content="C2 Design Group mission and creative direction"><style>
 :root{--plum:#1E1545;--pink:#EE2652;--teal:#00BAB4;--max:1280px}
 *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}body{background:#080a0f;color:#fff;font-family:Arial,Helvetica,sans-serif}
-.hero{position:relative;height:100svh;min-height:0;overflow:hidden;isolation:isolate;background:#101322;--p:0}
+.hero{position:relative;height:100svh;min-height:0;overflow:hidden;isolation:isolate;background:linear-gradient(110deg,#299ef4 0%,#7ab7f6 56%,#c1d9f5 100%);--p:0}
 .media,.tint,.lights,.foreground,.hero-title,.sky-title{position:absolute;inset:0}
 .media{z-index:0;background-position:center;background-size:cover;will-change:transform,opacity}
 .tint{z-index:2;background:linear-gradient(90deg,rgba(8,10,15,.76) 0%,rgba(8,10,15,.35) 50%,rgba(8,10,15,.12) 100%);pointer-events:none}
@@ -19,11 +19,11 @@ h1{font-size:clamp(54px,7vw,108px);line-height:.88;letter-spacing:-.065em;margin
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
 
-.mission-photo{background-image:url("assets/mission-building.webp");background-position:center 47%;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*16%))}
+.mission-photo{background-image:url("assets/mission-building-extended.webp");background-position:center 47%;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*19%))}
 .mission-skycopy{position:absolute;z-index:1;inset:0;display:flex;align-items:center;pointer-events:none}
 .mission-skycopy h1{font-size:5vw}
 .mission-skycopy .copy{transform:translate3d(0,calc((1 - var(--p))*20vh - 10vh),0);opacity:clamp(0,calc(var(--p)*6),1);filter:drop-shadow(0 3px 14px rgba(0,0,0,.32))}
-.mission-front{z-index:3;background:url("assets/mission-building-foreground.webp") center 47%/cover no-repeat;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*16%))}
+.mission-front{z-index:3;background:url("assets/mission-building-foreground-extended.webp") center 47%/cover no-repeat;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*19%))}
 .mission-tint{z-index:4;background:linear-gradient(90deg,rgba(8,10,15,.35),rgba(8,10,15,.03) 65%);pointer-events:none}
 .mission-tag{z-index:6}
 @media(max-width:768px){.mission-photo,.mission-front{background-position:54% center}.mission-skycopy .copy{transform:translate3d(0,calc((1 - var(--p))*23vh - 9vh),0)}}

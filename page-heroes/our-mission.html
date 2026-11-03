@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our Mission | C2 Design Group</title><meta name="description" content="C2 Design Group photography and aerial perspective"><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our Mission | C2 Design Group</title><meta name="description" content="C2 Design Group mission and creative direction"><style>
 :root{--plum:#1E1545;--pink:#EE2652;--teal:#00BAB4;--max:1280px}
 *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}body{background:#080a0f;color:#fff;font-family:Arial,Helvetica,sans-serif}
 .hero{position:relative;height:100svh;min-height:0;overflow:hidden;isolation:isolate;background:#101322;--p:0}
@@ -21,12 +21,12 @@ h1{font-size:clamp(54px,7vw,108px);line-height:.88;letter-spacing:-.065em;margin
 
 .mission-photo{background-image:url("assets/mission-building.webp");background-position:center 47%;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*3%))}
 .mission-skycopy{position:absolute;z-index:1;inset:0;display:flex;align-items:center;pointer-events:none}
-.mission-skycopy .copy{transform:translateY(calc((1 - var(--p))*35vh - 6vh));opacity:clamp(0,calc(var(--p)*3.5),1);filter:drop-shadow(0 3px 14px rgba(0,0,0,.32))}
+.mission-skycopy .copy{transform:translate3d(0,calc((1 - var(--p))*48vh - 5vh),0);opacity:clamp(0,calc(var(--p)*3.5),1);filter:drop-shadow(0 3px 14px rgba(0,0,0,.32))}
 .mission-front{z-index:3;background:url("assets/mission-building-foreground.webp") center 47%/cover no-repeat;transform:scale(calc(1.09 + var(--p)*.06)) translateY(calc(var(--p)*3%))}
 .mission-tint{z-index:4;background:linear-gradient(90deg,rgba(8,10,15,.35),rgba(8,10,15,.03) 65%);pointer-events:none}
 .mission-tag{z-index:6}
-@media(max-width:768px){.mission-photo,.mission-front{background-position:54% center}.mission-skycopy .copy{transform:translateY(calc((1 - var(--p))*27vh - 2vh))}}
-@media(max-width:390px){.mission-skycopy .copy{transform:translateY(calc((1 - var(--p))*22vh - 1vh))}.mission-skycopy h1{font-size:clamp(38px,11vw,48px)}}
+@media(max-width:768px){.mission-photo,.mission-front{background-position:54% center}.mission-skycopy .copy{transform:translate3d(0,calc((1 - var(--p))*34vh - 2vh),0)}}
+@media(max-width:390px){.mission-skycopy .copy{transform:translate3d(0,calc((1 - var(--p))*28vh - 1vh),0)}.mission-skycopy h1{font-size:clamp(38px,11vw,48px)}}
 </style></head><body data-page="our-mission"><main class="hero" style="--p:0"><div class="media mission-photo" aria-hidden="true"></div><div class="mission-skycopy"><div class="content"><div class="copy"><p class="kicker">03 / Our Mission</p><h1>Elevate the way<br>your story is seen.</h1><p class="lede">Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p><span class="rule"></span></div></div></div><div class="foreground mission-front" aria-hidden="true"></div><div class="mission-tint"></div><div class="tag mission-tag">Creative direction / Every perspective</div></main><script>
 (()=>{const root=document.querySelector('.hero');let external=false,start=performance.now();const clamp=v=>Math.max(0,Math.min(1,v));function setProgress(v){root.style.setProperty('--p',clamp(v).toFixed(4));root.dispatchEvent(new CustomEvent('c2progress',{detail:clamp(v)}));}
 const params=new URLSearchParams(location.search);const auto=params.get('mode')!=='scroll';

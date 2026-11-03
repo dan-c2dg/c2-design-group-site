@@ -167,7 +167,42 @@ section{scroll-margin-top:0}
  .footer-grid{grid-template-columns:1fr 1fr}
  .footer-bottom{display:block;line-height:2}
 }
-</style><style><style>html,body{margin:0;padding:0;background:#080a0f}body{overflow-x:hidden}section{min-height:100vh} .embed-note{position:fixed;bottom:10px;right:10px;font:10px Arial;color:rgba(255,255,255,.4);z-index:9999}</style></style></head><body><section id="photography" class="photo-gallery-section" aria-labelledby="photography-title">
+</style><style>html,body{margin:0;padding:0;background:#080a0f}body{overflow-x:hidden}section{min-height:100vh} .embed-note{position:fixed;bottom:10px;right:10px;font:10px Arial;color:rgba(255,255,255,.4);z-index:9999}</style><style>
+/* C2DG gallery viewer — constrained to the 1280px desktop breakpoint.
+   The overlay stays inside the Wix iframe; the image never expands past its controls. */
+.photo-lightbox{
+  left:50%;right:auto;top:0;bottom:0;
+  width:min(100%,1280px);max-width:1280px;
+  height:100vh;height:100dvh;
+  transform:translateX(-50%);
+  padding:clamp(70px,8vh,100px) clamp(70px,7vw,100px) clamp(80px,10vh,110px);
+  overflow:hidden;
+}
+.photo-lightbox img{
+  display:block;
+  width:auto;height:auto;
+  max-width:100%;max-height:100%;
+  object-fit:contain;
+  flex:0 1 auto;
+}
+.photo-lightbox-close{right:clamp(16px,2.5vw,32px);top:clamp(14px,2vh,24px)}
+.photo-lightbox-prev{left:clamp(12px,2.5vw,32px)}
+.photo-lightbox-next{right:clamp(12px,2.5vw,32px)}
+.photo-lightbox-meta{left:clamp(20px,5vw,70px);right:clamp(20px,5vw,70px)}
+@media(max-width:768px){
+ .photo-lightbox{padding:72px 62px 82px}
+ .photo-lightbox img{max-width:100%;max-height:100%}
+ .photo-lightbox-prev{left:10px}.photo-lightbox-next{right:10px}
+ .photo-lightbox-meta{left:18px;right:18px}
+}
+@media(max-width:390px){
+ .photo-lightbox{padding:65px 45px 75px}
+ .photo-lightbox-arrow{width:36px;height:36px;font-size:21px}
+ .photo-lightbox-prev{left:5px}.photo-lightbox-next{right:5px}
+ .photo-lightbox-meta{bottom:38px;font-size:9px;letter-spacing:.09em}
+ .photo-lightbox-dots{bottom:17px}
+}
+</style></head><body><section id="photography" class="photo-gallery-section" aria-labelledby="photography-title">
   <div class="photo-gallery-shell">
     <div class="photo-gallery-intro"><div><p class="section-kicker">Our Work — Photography</p><h2 id="photography-title">See it<br>differently.</h2></div><p>Explore four distinct C2DG photography disciplines. Click any category to open a full-screen gallery, then use the arrows, keyboard, or swipe gestures to move through the work.</p></div>
     <div class="photo-gallery" role="list">
@@ -205,8 +240,8 @@ const galleries={
 };
 const photoLightbox=document.querySelector('#photoLightbox'),photoLightboxImage=document.querySelector('#photoLightboxImage'),photoLightboxTitle=document.querySelector('#photoLightboxTitle'),photoLightboxCount=document.querySelector('#photoLightboxCount'),photoLightboxDots=document.querySelector('#photoLightboxDots');let galleryKey=null,galleryIndex=0,touchStartX=0;
 function renderGallery(){const g=galleries[galleryKey];if(!g)return;photoLightboxImage.src=g.images[galleryIndex];photoLightboxImage.alt=`C2DG ${g.title} photograph ${galleryIndex+1}`;photoLightboxTitle.textContent=g.title;photoLightboxCount.textContent=`${String(galleryIndex+1).padStart(2,'0')} / ${String(g.images.length).padStart(2,'0')}`;photoLightboxDots.innerHTML=g.images.map((_,i)=>`<button type="button" class="${i===galleryIndex?'is-active':''}" aria-label="Photo ${i+1}"></button>`).join('');photoLightboxDots.querySelectorAll('button').forEach((b,i)=>b.addEventListener('click',()=>{galleryIndex=i;renderGallery()}));}
-function openGallery(key){galleryKey=key;galleryIndex=0;renderGallery();photoLightbox.classList.add('is-open');photoLightbox.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
-function closeGallery(){photoLightbox.classList.remove('is-open');photoLightbox.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+function openGallery(key){galleryKey=key;galleryIndex=0;renderGallery();photoLightbox.classList.add('is-open');photoLightbox.setAttribute('aria-hidden','false');document.body.dataset.previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden'}
+function closeGallery(){photoLightbox.classList.remove('is-open');photoLightbox.setAttribute('aria-hidden','true');document.body.style.overflow=document.body.dataset.previousOverflow||'';delete document.body.dataset.previousOverflow}
 function stepGallery(dir){if(!galleryKey)return;const g=galleries[galleryKey];galleryIndex=(galleryIndex+dir+g.images.length)%g.images.length;renderGallery()}
 document.querySelectorAll('.photo-tile').forEach(tile=>tile.addEventListener('click',()=>openGallery(tile.dataset.gallery)));
 document.querySelector('.photo-lightbox-close')?.addEventListener('click',closeGallery);document.querySelector('.photo-lightbox-prev')?.addEventListener('click',()=>stepGallery(-1));document.querySelector('.photo-lightbox-next')?.addEventListener('click',()=>stepGallery(1));photoLightbox?.addEventListener('click',e=>{if(e.target===photoLightbox)closeGallery()});photoLightboxImage?.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});photoLightboxImage?.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>45)stepGallery(dx<0?1:-1)},{passive:true});document.addEventListener('keydown',e=>{if(!photoLightbox.classList.contains('is-open'))return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowRight')stepGallery(1);if(e.key==='ArrowLeft')stepGallery(-1)});

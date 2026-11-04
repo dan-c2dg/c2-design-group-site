@@ -300,6 +300,51 @@ section{scroll-margin-top:0}
  #webgl{width:var(--c2-rail)!important;right:var(--c2-edge)!important;opacity:.55}
  .hero-copy{z-index:6}
 }
+/* V16: allow interactive hero CTA while retaining the original text/3D layout */
+.hero-copy{pointer-events:auto}
+.photo-gallery-shell>.c2-cta{margin-top:26px}
+.standard-inner .c2-cta{margin-top:16px}
+@media(max-width:768px){.photo-gallery-shell>.c2-cta{margin-top:20px}}
+
+
+/* V17 — readable copy with a unified centered 1280px composition rail.
+   All text stays left aligned; right-hand animations retain their space. */
+:root{--c2-content-max:1280px;--c2-gutter:clamp(18px,3vw,36px);
+      --c2-rail:min(1280px,calc(100% - 2 * var(--c2-gutter)));
+      --c2-edge:max(var(--c2-gutter),calc((100% - 1280px)/2))}
+html,body,button,input,textarea,select{font-family:"Filson Pro","Filson","Filson Soft",Arial,sans-serif}
+.hero-copy,.chapter-copy,.flip-copy,.photo-copy{text-align:left!important}
+.hero-copy{width:min(660px,calc(var(--c2-rail) * .52))!important;max-width:none!important}
+.chapter-copy,.flip-copy{width:min(680px,calc(var(--c2-rail) * .54))!important;max-width:none!important}
+.photo-copy{width:min(660px,calc(var(--c2-rail) * .53))!important;max-width:none!important}
+.hero-copy p:last-child,.chapter-copy p,.flip-copy p,.photo-copy p{max-width:640px!important}
+.work-intro-inner{max-width:1280px!important}
+.work-intro h2{max-width:1080px!important}
+.standard-inner{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,5vw,90px)}
+.photo-gallery-intro{gap:clamp(30px,5vw,70px)}
+#flipbook-stack{width:min(480px,calc(var(--c2-rail) * .37))!important}
+#digital-device{width:min(530px,calc(var(--c2-rail) * .41))!important}
+.chapter-visual{width:min(340px,calc(var(--c2-rail) * .27))!important}
+@media(min-width:1281px){
+  .hero-copy,.chapter-copy,.flip-copy,.photo-copy{flex-shrink:0}
+}
+@media(max-width:1000px){
+  .hero-copy,.chapter-copy,.flip-copy,.photo-copy{
+    width:min(590px,calc(var(--c2-rail) * .60))!important;
+    max-width:100%!important;
+  }
+}
+@media(max-width:768px){
+  :root{--c2-gutter:24px}
+  .hero-copy,.chapter-copy,.flip-copy,.photo-copy{
+    width:min(100%,590px)!important;max-width:100%!important
+  }
+  .standard-inner{grid-template-columns:1fr}
+  #flipbook-stack{width:min(470px,calc(var(--c2-rail) * .82))!important}
+  #digital-device{width:min(500px,calc(var(--c2-rail) * .82))!important}
+}
+@media(max-width:390px){:root{--c2-gutter:18px}}
+
 </style>
 </head>
 
@@ -339,6 +384,7 @@ section{scroll-margin-top:0}
     <p class="eyebrow">C2 Design Group • Creative Design & Media</p>
     <h1>Ideas<br>in motion.</h1>
     <p>Strategic branding, print and digital media, professional photography, certified drone capabilities, and motion content designed to make brands and projects stand out.</p>
+    <a class="c2-cta" data-c2-page="work" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-work.html" target="_top" rel="noopener">Explore what we elevate</a>
   </div>
   <div class="scroll-hint">Scroll to explore ↓</div>
 </section>
@@ -419,6 +465,7 @@ section{scroll-margin-top:0}
       <button class="photo-tile" type="button" role="listitem" data-gallery="events"><img src="https://static.wixstatic.com/media/47f173_5522417e60a44dd39e4e39ea4421d6c3~mv2.jpg" alt="C2DG events and products photography" loading="lazy"><span><b>03</b>Events + Products</span></button>
       <button class="photo-tile" type="button" role="listitem" data-gallery="people"><img src="https://static.wixstatic.com/media/47f173_5ef293983bf446c9adc645a702a4eef8~mv2.jpg" alt="C2DG people photography" loading="lazy"><span><b>04</b>People</span></button>
     </div>
+    <a class="c2-cta" data-c2-page="photography" href="https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html" target="_top" rel="noopener">See how we elevate Photography</a>
     <div class="photo-gallery-note">Click a discipline to open the full gallery • Swipe on touch devices • ← / → on keyboard</div>
   </div>
 </section>
@@ -464,6 +511,7 @@ section{scroll-margin-top:0}
     <div>
       <p>C2 Design Group keeps ideas rolling—from the first spark of a concept to the final piece that reaches an audience. Our approach connects strategy, identity, production, photography, and motion so the story keeps moving.</p>
       <p>We believe the best creative work has momentum. It should be distinctive enough to be remembered, practical enough to be used, and built to carry an idea forward across every medium.</p>
+      <a class="c2-cta" data-c2-page="story" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-story.html" target="_top" rel="noopener">Discover our story</a>
       <div class="story-mark" aria-hidden="true">C2</div>
     </div>
   </div>
@@ -478,6 +526,7 @@ section{scroll-margin-top:0}
     <div>
       <p>Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p>
       <p>Whether the need is a new identity, a marketing campaign, aerial photography, a digital experience, or a complete visual content system, C2 Design Group creates work designed to move people and projects forward.</p>
+      <a class="c2-cta" data-c2-page="mission" href="https://dan-c2dg.github.io/c2-design-group-site/sections/our-mission.html" target="_top" rel="noopener">Explore our mission</a>
       <div class="mission-mark" aria-hidden="true">↗</div>
     </div>
   </div>
@@ -704,16 +753,24 @@ document.querySelector('.photo-lightbox-close')?.addEventListener('click',closeG
 
 /* CTA destinations — change these URLs to the FINAL Wix page URLs before publishing.
    Photography is grounded in your existing GitHub section URL; others are provisional paths. */
-const C2_PAGE_URLS = {
-  work: 'https://dan-c2dg.github.io/c2-design-group-site/sections/our-work.html',
-  brands: 'https://dan-c2dg.github.io/c2-design-group-site/sections/branding.html',
-  print: 'https://dan-c2dg.github.io/c2-design-group-site/sections/print-digital.html',
-  photography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/photography.html',
-  videography: 'https://dan-c2dg.github.io/c2-design-group-site/sections/videography.html'
+const C2_WIX_BASE = 'https://creative-c2dg.wixstudio.com/my-site-2';
+/* Replace each empty path with the exact Wix page path, e.g. '/blank-1-1-1-1-1-1'.
+   That example path is not assigned because its page identity is unconfirmed. */
+const C2_WIX_PATHS = {
+  work: '',
+  brands: '',
+  print: '',
+  photography: '',
+  videography: '',
+  story: '',
+  mission: ''
 };
+const C2_PAGE_URLS = Object.fromEntries(
+  Object.entries(C2_WIX_PATHS).map(([key,path])=>[key,C2_WIX_BASE+path])
+);
 document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
   const url=C2_PAGE_URLS[link.dataset.c2Page];
-  if(url) link.href=url;
+  if(url){ link.href=url; link.target='_top'; link.rel='noopener'; }
 });
 
 /* =========================================================

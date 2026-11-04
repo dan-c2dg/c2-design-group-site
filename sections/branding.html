@@ -21,13 +21,14 @@ html,body{height:100%;} .hero{height:100svh;min-height:0;max-height:100svh;}
 </style>
 <style id="c2dg-filson-responsive">
 :root{--c2-hero-max:1280px;--c2-hero-gutter:clamp(18px,3vw,36px)}
-html,body,button,input,textarea{font-family:"Filson Pro","Filson","Filson Soft",Arial,sans-serif!important}
+html,body,button,input,textarea{font-family:"filson-pro","Filson Pro","Filson",Arial,sans-serif!important}
 .content{width:min(calc(100% - 2 * var(--c2-hero-gutter)),var(--c2-hero-max))!important}
 .copy{text-align:left!important;max-width:min(700px,100%)!important}
 .copy p{max-width:640px!important}
 @media(max-width:768px){:root{--c2-hero-gutter:24px}.copy{max-width:100%!important}}
 @media(max-width:390px){:root{--c2-hero-gutter:18px}}
 </style>
+<link rel="stylesheet" href="https://use.typekit.net/djs7ght.css">
 </head><body data-page="branding"><main class="hero" style="--p:0" aria-label="Branding animated introduction"><div class="grain"></div><div class="art art-brand" aria-hidden="true"><div class="brand-orbit orbit-a"></div><div class="brand-orbit orbit-b"></div><div class="brand-square sq-a">C2</div><div class="brand-square sq-b">DG</div><div class="brand-rule"></div></div><div class="content"><div class="copy"><div class="eyebrow">C2 DESIGN GROUP / BRANDING</div><h1>Make an impression.</h1><p>A distinctive identity takes shape.</p></div></div><div class="micro">CREATIVE DESIGN &amp; MEDIA <span style="color:#00BAB4">●</span></div><div class="side-label">IDEAS IN MOTION</div><div class="progress"></div></main><script>
 (()=>{const root=document.querySelector('.hero'),alt=document.querySelector('#altitude'),tc=document.querySelector('#timecode');let p=0, external=false, last=performance.now(), start=last;const clamp=n=>Math.max(0,Math.min(1,n));function paint(n){p=clamp(n);root.style.setProperty('--p',p.toFixed(4));if(alt)alt.textContent=String(Math.round(120+380*p));if(tc)tc.textContent=String(Math.round(p*24)).padStart(2,'0')};paint(0);
 // Standalone: scroll within the hosted HTML; embedded: optional parent scroll-progress messages.

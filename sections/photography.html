@@ -34,13 +34,14 @@ h1{font-size:clamp(54px,7vw,108px);line-height:.88;letter-spacing:-.065em;margin
 </style>
 <style id="c2dg-filson-responsive">
 :root{--c2-hero-max:1280px;--c2-hero-gutter:clamp(18px,3vw,36px)}
-html,body,button,input,textarea{font-family:"Filson Pro","Filson","Filson Soft",Arial,sans-serif!important}
+html,body,button,input,textarea{font-family:"filson-pro","Filson Pro","Filson",Arial,sans-serif!important}
 .content{width:min(calc(100% - 2 * var(--c2-hero-gutter)),var(--c2-hero-max))!important}
 .copy{text-align:left!important;max-width:min(700px,100%)!important}
 .copy p{max-width:640px!important}
 @media(max-width:768px){:root{--c2-hero-gutter:24px}.copy{max-width:100%!important}}
 @media(max-width:390px){:root{--c2-hero-gutter:18px}}
 </style>
+<link rel="stylesheet" href="https://use.typekit.net/djs7ght.css">
 </head><body data-page="photography"><main class="hero" style="--p:0"><div class="media grand-day" aria-hidden="true"></div><div class="media grand-dusk" aria-hidden="true"></div><div class="photo-skycopy"><div class="content"><div class="copy"><p class="kicker">C2 Design Group / Photography</p><h1>See it<br>differently.</h1><p class="lede">A fresh perspective, framed with intention. Architecture, spaces, and the details that bring a story to life.</p><span class="rule"></span></div></div></div><div class="photo-wash"></div><div class="tag photo-tag">Architecture / Lifestyle / Detail</div></main><script>
 (()=>{const root=document.querySelector('.hero');let external=false,start=performance.now();const clamp=v=>Math.max(0,Math.min(1,v));function setProgress(v){root.style.setProperty('--p',clamp(v).toFixed(4));root.dispatchEvent(new CustomEvent('c2progress',{detail:clamp(v)}));}
 const params=new URLSearchParams(location.search);const auto=params.get('mode')!=='scroll';

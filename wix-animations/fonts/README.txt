@@ -1,0 +1,1 @@
+Filson Pro is a licensed font. CSS requests locally installed Filson Pro / Filson / Filson Soft. To guarantee the font for every visitor, supply properly licensed webfont files and add @font-face declarations to the HTML. No font files are bundled.\n

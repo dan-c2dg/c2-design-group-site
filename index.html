@@ -388,6 +388,109 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
  .photo-gallery-shell{width:100%;max-width:1280px}
  .photo-lightbox-close{top:calc(105px + env(safe-area-inset-top,0px))!important}
 }
+
+/* V23 touch ergonomics, layout stability and reduced-motion support */
+@media (max-width:768px){
+  .c2-cta{min-height:48px;line-height:1.45}
+  .photo-tile{touch-action:manipulation}
+  .photo-gallery-section{overflow:hidden}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  .c2-cta,.photo-tile{transition:none!important}
+}
+
+/* V24: small-screen-first spacing, typography, and layout */
+:root{--c2-mobile-edge:20px}
+@media(max-width:768px){
+ html{scroll-snap-type:none!important;scroll-behavior:auto}
+ body{overflow-x:clip}
+ .full-section,.work-chapter,.work-intro,.standard,.chapter{
+   max-height:none!important;
+   min-height: min(760px,100svh)!important;
+ }
+ .hero{min-height:100svh!important;height:100svh!important;max-height:none!important}
+ .hero-copy,.chapter-copy,.flip-copy,.photo-copy,.standard-copy,
+ .work-intro-inner,.photo-gallery-shell{
+   box-sizing:border-box;
+   text-align:left!important;
+   max-width:100%!important;
+ }
+ .hero-copy{
+   left:var(--c2-mobile-edge)!important;
+   right:var(--c2-mobile-edge)!important;
+   width:auto!important;
+   top:42%!important;
+ }
+ .chapter-inner,.work-chapter .chapter-inner{
+   padding-left:var(--c2-mobile-edge)!important;
+   padding-right:var(--c2-mobile-edge)!important;
+ }
+ .work-intro{padding:84px var(--c2-mobile-edge)!important}
+ .standard-inner,.photo-gallery-section{padding-left:var(--c2-mobile-edge)!important;padding-right:var(--c2-mobile-edge)!important}
+ .flip-grid{padding-left:var(--c2-mobile-edge)!important;padding-right:var(--c2-mobile-edge)!important}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{
+   font-size:clamp(36px,10vw,56px)!important;
+   line-height:1.02!important;
+   letter-spacing:-.045em!important;
+   overflow-wrap:normal;
+ }
+ .hero-copy p:last-child,.work-intro p,.chapter p,.flip-copy p,.photo-copy p,
+ .standard p,.photo-gallery-intro p,.standard-copy p{
+   font-size:17px!important;
+   line-height:1.58!important;
+   letter-spacing:0!important;
+   max-width:42ch!important;
+   margin-top:18px!important;
+ }
+ .c2-cta{
+   font-size:15px!important;
+   line-height:1.35!important;
+   letter-spacing:.025em!important;
+   min-height:50px!important;
+   padding:14px 20px!important;
+   display:inline-flex!important;
+   align-items:center;
+   justify-content:center;
+   max-width:100%;
+   white-space:normal!important;
+   overflow-wrap:anywhere;
+ }
+ .eyebrow,.section-kicker,.chapter-number{font-size:12px!important;line-height:1.4!important}
+ .flip-copy{margin-top:clamp(45px,9svh,80px)!important}
+ .flip-stage{min-height:100svh!important;height:100svh!important}
+ .flip-page-label,.flip-editor-note{font-size:11px!important}
+ .photo-gallery-section{padding-top:72px!important;padding-bottom:80px!important}
+ .photo-lightbox-close{top:calc(105px + env(safe-area-inset-top,0px))!important}
+ .photo-tile{content-visibility:auto}
+ /* reduce expensive blur and background repainting on mobile */
+ .site-nav,.work-menu,.work-submenu-list{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+ .chapter-bg{will-change:auto}
+}
+@media(max-width:390px){
+ :root{--c2-mobile-edge:18px}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{
+   font-size:clamp(34px,9.6vw,40px)!important
+ }
+ .hero-copy p:last-child,.work-intro p,.chapter p,.flip-copy p,.photo-copy p,
+ .standard p,.photo-gallery-intro p,.standard-copy p{font-size:17px!important}
+ .c2-cta{font-size:15px!important;padding:13px 17px!important}
+}
+@media(max-width:340px){
+ :root{--c2-mobile-edge:16px}
+ .hero h1,.work-intro h2,.chapter h2,.flip-copy h2,.photo-copy h2,.standard h2,.photo-gallery-intro h2{font-size:32px!important}
+ .c2-cta{width:100%;justify-content:space-between}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ .flip-paper,.fly-word{transition:none!important}
+}
+
+/* V25 responsive image assets: background visuals stay full bleed, smaller on phones */
+@media(max-width:768px){
+ .photo-bg{background-image:url("images/buildings-front-mobile.webp")!important}
+ .photo-sky{background-image:url("images/sky-mobile.webp")!important}
+}
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
@@ -408,7 +511,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
 
 <body>
 <nav class="site-nav" aria-label="Primary navigation">
-  <a class="nav-brand" href="#hero"><img src="images/c2dg_icon_rgb-color-rev.svg" width="50px"></a>
+  <a class="nav-brand" href="#hero"><img loading="lazy" decoding="async" src="images/c2dg_icon_rgb-color-rev.svg" width="50px"></a>
   <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span></span></button>
   <div class="nav-links">
     <div class="nav-work" id="navWork">
@@ -481,13 +584,13 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
       </div>
     </div>
     <div id="flipbook-stack" aria-label="Scroll-controlled print portfolio">
-      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page1.webp" alt="C2DG print design portfolio page"><span class="page-number">Print 01</span></div>
-      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page2.webp" alt="C2DG editorial design portfolio page"><span class="page-number">Print 02</span></div>
-      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="images/page3.webp" alt="C2DG print portfolio page"><span class="page-number">Print 03</span></div>
-      <div class="flip-paper"><img loading="lazy" decoding="async" class="page-image" src="https://static.wixstatic.com/media/beab6e_4b94683f15bc413c9780b90a360b882d~mv2_d_2300_1500_s_2.jpg" alt="C2DG design portfolio page"><span class="page-number">Print 04</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" width="720" height="974" class="page-image" src="images/page1.webp" alt="C2DG print design portfolio page"><span class="page-number">Print 01</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" width="720" height="974" class="page-image" src="images/page2.webp" alt="C2DG editorial design portfolio page"><span class="page-number">Print 02</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" width="720" height="974" class="page-image" src="images/page3.webp" alt="C2DG print portfolio page"><span class="page-number">Print 03</span></div>
+      <div class="flip-paper"><img loading="lazy" decoding="async" width="720" height="974" class="page-image" src="https://static.wixstatic.com/media/beab6e_4b94683f15bc413c9780b90a360b882d~mv2_d_2300_1500_s_2.jpg" alt="C2DG design portfolio page"><span class="page-number">Print 04</span></div>
     </div>
     <div id="digital-device" aria-hidden="true">
-      <div class="device-shell"><div class="device-screen"><img id="digital-screen-image" loading="eager" decoding="async" src="images/AAA-website.webp" alt=""></div></div><div class="device-base"></div>
+      <div class="device-shell"><div class="device-screen"><img id="digital-screen-image" loading="lazy" decoding="async" src="images/AAA-website-mobile.webp" srcset="images/AAA-website-mobile.webp 640w, images/AAA-website.webp 1920w" sizes="(max-width: 768px) 330px, (max-width: 1200px) 470px, 550px" alt=""></div></div><div class="device-base"></div>
     </div>
     <div class="digital-caption" id="digitalCaption">Digital experience • Web design</div>
     <div class="flip-page-label" id="flipPageLabel">Scroll to turn pages ↓</div>
@@ -530,14 +633,14 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
 <div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
   <button class="photo-lightbox-close" type="button" aria-label="Close photography viewer">×</button>
   <button class="photo-lightbox-arrow photo-lightbox-prev" type="button" aria-label="Previous photo">‹</button>
-  <img id="photoLightboxImage" src="" alt="">
+  <img loading="lazy" decoding="async" id="photoLightboxImage" src="" alt="">
   <button class="photo-lightbox-arrow photo-lightbox-next" type="button" aria-label="Next photo">›</button>
   <div class="photo-lightbox-meta"><span class="photo-lightbox-title" id="photoLightboxTitle"></span><span class="photo-lightbox-count" id="photoLightboxCount"></span></div>
   <div class="photo-lightbox-dots" id="photoLightboxDots"></div>
 </div>
 <section id="videography" class="work-chapter chapter chapter-video video-chapter">
   <div class="video-bg-wrap" aria-hidden="true">
-    <video id="c2VideoBg" class="video-bg" autoplay muted loop playsinline preload="metadata" poster="https://static.wixstatic.com/media/4f980b_82b336c376e847e99be6180b9d1a1365f000.jpg">
+    <video id="c2VideoBg" class="video-bg" muted loop playsinline preload="none" poster="https://static.wixstatic.com/media/4f980b_82b336c376e847e99be6180b9d1a1365f000.jpg">
       <!-- Replace VIDEO_URL in the script below with the direct C2DG/Wix MP4 URL. -->
     </video>
     <div class="video-fallback"></div>
@@ -608,7 +711,7 @@ const C2_MODEL_URL = './models/C2Icon.glb';
 const canvas = document.querySelector('#webgl');
 const loading = document.querySelector('#loading');
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1:1.5));
 renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -623,7 +726,7 @@ const key = new THREE.DirectionalLight(0xffffff,4); key.position.set(5,1,-5); sc
 const fill = new THREE.DirectionalLight(0x6688ff,3.2); fill.position.set(5,30,-4); scene.add(fill);
 
 let heroModel, heroMixer, heroClip;
-new GLTFLoader().load(C2_MODEL_URL,(gltf)=>{
+function loadHeroModel(){new GLTFLoader().load(C2_MODEL_URL,(gltf)=>{
   heroModel=gltf.scene;
   heroModel.scale.setScalar(1.5);
 	heroModel.rotation.set(0, 0, 0);
@@ -635,7 +738,8 @@ new GLTFLoader().load(C2_MODEL_URL,(gltf)=>{
   }
   loading.style.display='none';
   updateHero();
-},undefined,(e)=>{console.error(e);loading.textContent='C2 model failed to load';});
+},undefined,(e)=>{console.error(e);loading.textContent='C2 model failed to load';});}
+if(innerWidth<=768){requestAnimationFrame(()=>setTimeout(loadHeroModel,180))}else{loadHeroModel()}
 
 function heroProgress(){
   const max=document.documentElement.scrollHeight-innerHeight;
@@ -650,15 +754,22 @@ function updateHero(){
   }
   document.querySelector('#scrollProgress').style.width=(p*100)+'%';
 }
-addEventListener('scroll',updateHero,{passive:true});
+
 addEventListener('resize',()=>{
   renderer.setSize(canvas.clientWidth,canvas.clientHeight,false); camera.aspect=canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix();
 });
-function renderHero(){
-  renderer.render(scene,camera);
-  requestAnimationFrame(renderHero);
+let heroIsVisible=true;
+new IntersectionObserver(entries=>{heroIsVisible=entries[0]?.isIntersecting??false;if(heroIsVisible && !heroRAF)heroRAF=requestAnimationFrame(renderHero)},{rootMargin:"200px"}).observe(document.querySelector("#hero"));
+let lastHeroFrame=0;let heroRAF=0;
+function renderHero(now=0){
+ heroRAF=0;
+  if(!document.hidden && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && heroIsVisible
+    && (innerWidth>=768 || now-lastHeroFrame>=42)){
+    renderer.render(scene,camera);lastHeroFrame=now;
+  }
+  if(heroIsVisible)heroRAF=requestAnimationFrame(renderHero);
 }
-renderHero();
+heroRAF=requestAnimationFrame(renderHero);
 
 
 /* =========================================================
@@ -672,7 +783,7 @@ const digitalDevice=document.querySelector('#digital-device');
 const digitalScreen=document.querySelector('#digital-screen-image');
 const digitalCaption=document.querySelector('#digitalCaption');
 // ONE persistent webpage image. Replace this with a tall screenshot (about 2x the visible screen height) for the scrolling-page effect.
-const digitalScrollImage='images/AAA-website.webp';
+
 function flipSectionProgress(){const r=flipSection.getBoundingClientRect();const travel=flipSection.offsetHeight-innerHeight;return travel>0?THREE.MathUtils.clamp(-r.top/travel,0,1):0}
 function updateFlipbook(){
   if(!flipStack)return;
@@ -694,7 +805,7 @@ function updateFlipbook(){
   const screenScrollStart=.68, screenScrollEnd=.95;
   const screenP=THREE.MathUtils.clamp((p-screenScrollStart)/(screenScrollEnd-screenScrollStart),0,1);
   const screenEased=screenP*screenP*(3-2*screenP);
-  if(digitalScreen){digitalScreen.src=digitalScrollImage;digitalScreen.style.transform=`translate3d(0,${(-100*screenEased).toFixed(2)}%,0)`}
+  if(digitalScreen){digitalScreen.style.transform=`translate3d(0,${(-100*screenEased).toFixed(2)}%,0)`}
   if(flipProgress)flipProgress.style.width=(p*100)+'%';
   if(flipPageLabel){
     const isPrint=p<screenScrollStart;
@@ -703,14 +814,19 @@ function updateFlipbook(){
     flipPageLabel.style.transform=isPrint?'translateY(0)':'translateY(12px)';
   }
 }
-addEventListener('scroll',updateFlipbook,{passive:true});addEventListener('resize',updateFlipbook);updateFlipbook();
+addEventListener('resize',updateFlipbook);updateFlipbook();
 
 /* =========================================================
    DRONE — normal flying perspective + scroll path
 ========================================================= */
+let updateDroneIfReady=()=>{};
+let droneInitialized=false;
+function initializeDrone(){
+ if(droneInitialized)return;
+ droneInitialized=true;
 const photoSection=document.querySelector('#drone');
 const photoBg=document.querySelector('#photoBg');const photoSky=document.querySelector('#photoSky');const droneCanvas=document.querySelector('#drone-webgl');const droneLoading=document.querySelector('#drone-loading');const captureFlash=document.querySelector('#captureFlash');const droneProgress=document.querySelector('#droneProgress');
-const droneRenderer=new THREE.WebGLRenderer({canvas:droneCanvas,antialias:true,alpha:true,powerPreference:'high-performance'});droneRenderer.setPixelRatio(Math.min(devicePixelRatio,1.5));droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneRenderer.outputColorSpace=THREE.SRGBColorSpace;droneRenderer.toneMapping=THREE.ACESFilmicToneMapping;droneRenderer.toneMappingExposure=1.2;
+const droneRenderer=new THREE.WebGLRenderer({canvas:droneCanvas,antialias:true,alpha:true,powerPreference:'high-performance'});droneRenderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1:1.5));droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneRenderer.outputColorSpace=THREE.SRGBColorSpace;droneRenderer.toneMapping=THREE.ACESFilmicToneMapping;droneRenderer.toneMappingExposure=1.2;
 const droneScene=new THREE.Scene();const droneCamera=new THREE.PerspectiveCamera(42,droneCanvas.clientWidth/droneCanvas.clientHeight,.01,1000);droneCamera.position.set(0,1.4,18);droneCamera.lookAt(0,1.4,0);droneScene.add(new THREE.HemisphereLight(0xffffff,0x23313a,2.6));const dk=new THREE.DirectionalLight(0xffffff,4);dk.position.set(6,10,7);droneScene.add(dk);const df=new THREE.DirectionalLight(0x79a9c2,1.8);df.position.set(-7,4,-5);droneScene.add(df);
 const flightGroup=new THREE.Group();droneScene.add(flightGroup);let droneRoot=null,droneReady=false,droneRotors=[];const DRONE_MODEL_URL='./models/drone.glb';
 new GLTFLoader().load(DRONE_MODEL_URL,gltf=>{droneRoot=gltf.scene;droneRoot.scale.setScalar(1.0);/* model correction: rotate the aircraft so rotor discs are horizontal */droneRoot.rotation.x=Math.PI/2;flightGroup.add(droneRoot);droneRoot.traverse(o=>{if(/^ROTOR_/.test(o.name))droneRotors.push(o)});droneReady=true;droneLoading.style.display='none';updateDrone()},xhr=>{if(xhr.total)droneLoading.textContent='Loading aerial experience… '+Math.round(xhr.loaded/xhr.total*100)+'%'},e=>{console.error(e);droneLoading.textContent='Place drone.glb in ./models/'});
@@ -744,7 +860,29 @@ function updateDrone(){
   }
   droneProgress.style.width=(p*100)+'%';
 }
-addEventListener('scroll',updateDrone,{passive:true});addEventListener('resize',()=>{droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneCamera.aspect=droneCanvas.clientWidth/droneCanvas.clientHeight;droneCamera.updateProjectionMatrix();updateDrone()});function renderDrone(){droneRenderer.render(droneScene,droneCamera);requestAnimationFrame(renderDrone)}renderDrone();
+addEventListener('resize',()=>{droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneCamera.aspect=droneCanvas.clientWidth/droneCanvas.clientHeight;droneCamera.updateProjectionMatrix();updateDrone()});let droneIsVisible=false;
+new IntersectionObserver(entries=>{droneIsVisible=entries[0]?.isIntersecting??false;if(droneIsVisible && !droneRAF){droneRAF=requestAnimationFrame(renderDrone)}},{rootMargin:"200px"}).observe(document.querySelector("#drone"));
+let lastDroneFrame=0;let droneRAF=0;
+function renderDrone(now=0){
+ droneRAF=0;
+ if(!document.hidden && droneIsVisible && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+   && (innerWidth>=768 || now-lastDroneFrame>=42)){
+   droneRenderer.render(droneScene,droneCamera);lastDroneFrame=now;
+ }
+ if(droneIsVisible)droneRAF=requestAnimationFrame(renderDrone);
+}
+
+
+
+ updateDroneIfReady=updateDrone;
+ updateDrone();
+}
+// Delay the second WebGL context and GLB request until the user approaches this section.
+new IntersectionObserver((entries,observer)=>{
+ if(entries.some(entry=>entry.isIntersecting)){
+   initializeDrone();observer.disconnect();
+ }
+},{rootMargin:'450px 0px'}).observe(document.querySelector('#drone'));
 
 /* =========================================================
    OUR STORY / OUR MISSION — SCROLL MOTION
@@ -777,11 +915,30 @@ function updateStoryMission(){
     missionMark.style.opacity=String(.9*(1-eased*.75));
   }
 }
-addEventListener('scroll',updateStoryMission,{passive:true});
+
 addEventListener('resize',updateStoryMission);
 updateStoryMission();
 
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.18});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* One passive scroll listener schedules one frame for DOM-based animations. */
+let c2ScrollFrame=0;
+function c2UpdateVisibleScrollEffects(){
+ c2ScrollFrame=0;
+ if(heroIsVisible)updateHero();
+ const flipRect=flipSection.getBoundingClientRect();
+ if(flipRect.bottom>-innerHeight*.4 && flipRect.top<innerHeight*1.4)updateFlipbook();
+ updateDroneIfReady();
+ const storyRect=storySection.getBoundingClientRect();
+ const missionRect=missionSection.getBoundingClientRect();
+ if((storyRect.bottom>0 && storyRect.top<innerHeight)||(missionRect.bottom>0 && missionRect.top<innerHeight))updateStoryMission();
+}
+addEventListener('scroll',()=>{
+ if(!c2ScrollFrame)c2ScrollFrame=requestAnimationFrame(c2UpdateVisibleScrollEffects);
+},{passive:true});
+addEventListener('resize',()=>{
+ if(!c2ScrollFrame)c2ScrollFrame=requestAnimationFrame(c2UpdateVisibleScrollEffects);
+},{passive:true});
 
 /* =========================================================
    PHOTOGRAPHY GALLERIES — click, arrows, keyboard, swipe
@@ -845,12 +1002,28 @@ document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
   const url=C2_PAGE_URLS[link.dataset.c2Page];
   if(url){
     link.href=url;
-    link.target='_blank'; // nested Wix HTML iframe cannot reliably navigate top frame
-    link.rel='noopener noreferrer';
+    // Wix Velo owns same-tab navigation. The actual href remains usable.
+    link.target='_self';
+    link.removeAttribute('rel');
     link.addEventListener('click', event=>{
-      // Send navigation request for optional Wix Velo same-tab handling.
-      // Keep normal link behavior as fallback: opens a new tab.
-      try{window.parent.postMessage({channel:'c2dg-animation-v1',type:'NAVIGATE',url},'*')}catch(e){}
+      if(event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button!==0)return;
+      event.preventDefault();
+      // A direct click can safely navigate the Wix page through Velo's wixLocation.to().
+      // Fallback opens the correct Wix URL in the existing embedded frame if the
+      // Velo receiver has not been installed; never create a new tab.
+      const requestId='nav-'+Date.now();
+      let acknowledged=false;
+      const receiveAck=e=>{
+        if(e.data?.channel==='c2dg-animation-v1' && e.data.type==='NAVIGATE_ACK' && e.data.requestId===requestId){
+          acknowledged=true;removeEventListener('message',receiveAck);
+        }
+      };
+      addEventListener('message',receiveAck);
+      window.parent.postMessage({channel:'c2dg-animation-v1',type:'NAVIGATE',url,requestId},'*');
+      setTimeout(()=>{
+        removeEventListener('message',receiveAck);
+        if(!acknowledged) window.location.assign(url);
+      },1200);
     });
   }
 });
@@ -884,11 +1057,44 @@ window.addEventListener('message',event=>{
 });
 window.addEventListener('load',()=>window.parent.postMessage({channel:'c2dg-animation-v1',type:'READY'},'*'));
 
-/* Videography background video */
-const VIDEO_URL = 'https://video.wixstatic.com/video/47f173_c6e8c68c65244c438dab9c88472930d7/1080p/mp4/file.mp4';
-const c2Video=document.getElementById('c2VideoBg');const c2VideoToggle=document.getElementById('c2VideoToggle');const c2VideoIcon=c2VideoToggle?.querySelector('.video-control-icon');const c2VideoLabel=c2VideoToggle?.querySelector('.video-control-label');
-function setVideoButton(paused){if(!c2VideoToggle)return;c2VideoToggle.classList.toggle('is-paused',paused);c2VideoToggle.setAttribute('aria-pressed',paused?'true':'false');c2VideoToggle.setAttribute('aria-label',paused?'Play background video':'Pause background video');if(c2VideoIcon)c2VideoIcon.textContent=paused?'▶':'Ⅱ';if(c2VideoLabel)c2VideoLabel.textContent=paused?'PLAY':'PAUSE'}
-if(c2Video&&VIDEO_URL){const source=document.createElement('source');source.src=VIDEO_URL;source.type='video/mp4';c2Video.appendChild(source);c2Video.load();c2Video.play().catch(()=>{})}if(c2Video){c2Video.addEventListener('play',()=>setVideoButton(false));c2Video.addEventListener('pause',()=>setVideoButton(true));c2Video.addEventListener('error',()=>console.warn('C2DG background video could not be loaded.'))}if(c2VideoToggle&&c2Video)c2VideoToggle.addEventListener('click',()=>{if(c2Video.paused)c2Video.play().catch(()=>{});else c2Video.pause()});setVideoButton(false);
+/* Videography background video: mobile loads ONLY on deliberate user play. */
+const VIDEO_URL='https://video.wixstatic.com/video/47f173_c6e8c68c65244c438dab9c88472930d7/1080p/mp4/file.mp4';
+const c2Video=document.getElementById('c2VideoBg');
+const c2VideoToggle=document.getElementById('c2VideoToggle');
+const c2VideoIcon=c2VideoToggle?.querySelector('.video-control-icon');
+const c2VideoLabel=c2VideoToggle?.querySelector('.video-control-label');
+let videoInitialized=false;
+function setVideoButton(paused){
+ if(!c2VideoToggle)return;
+ c2VideoToggle.classList.toggle('is-paused',paused);
+ c2VideoToggle.setAttribute('aria-pressed',paused?'true':'false');
+ c2VideoToggle.setAttribute('aria-label',paused?'Play background video':'Pause background video');
+ if(c2VideoIcon)c2VideoIcon.textContent=paused?'▶':'Ⅱ';
+ if(c2VideoLabel)c2VideoLabel.textContent=paused?'PLAY':'PAUSE';
+}
+function ensureVideoSource(){
+ if(videoInitialized||!c2Video)return;
+ const source=document.createElement('source');source.type='video/mp4';source.src=VIDEO_URL;
+ c2Video.appendChild(source);c2Video.load();videoInitialized=true;
+}
+if(c2Video){
+ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const mobile=matchMedia('(max-width:768px)').matches;
+ new IntersectionObserver(entries=>{
+  const visible=entries[0]?.isIntersecting;
+  if(visible && !reduceMotion && !mobile && !document.hidden){
+   ensureVideoSource();c2Video.play().catch(()=>{});
+  }else if(!c2Video.paused)c2Video.pause();
+ },{rootMargin:'100px'}).observe(c2Video);
+ c2Video.addEventListener('play',()=>setVideoButton(false));
+ c2Video.addEventListener('pause',()=>setVideoButton(true));
+ c2Video.addEventListener('error',()=>console.warn('C2DG background video could not load'));
+ c2VideoToggle?.addEventListener('click',()=>{
+  if(c2Video.paused){ensureVideoSource();c2Video.play().catch(()=>{})}
+  else c2Video.pause();
+ });
+ setVideoButton(true);
+}
 </script>
 </body>
 </html>

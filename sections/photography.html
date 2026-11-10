@@ -1,65 +1,89 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Photography | C2 Design Group</title><meta name="description" content="Architecture, lifestyle, and commercial photography by C2 Design Group"><!-- PHOTOGRAPHY: grand-reserve-0038-Edit.jpg (day) and grand-reserve-0477.jpg (dusk). -->
-<style>
-:root{--plum:#1E1545;--pink:#EE2652;--teal:#00BAB4;--max:1280px}
-*{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}body{background:#080a0f;color:#fff;font-family:Arial,Helvetica,sans-serif}
-.hero{position:relative;height:100svh;min-height:0;overflow:hidden;isolation:isolate;background:#101322;--p:0}
-.media,.tint,.lights,.foreground,.hero-title,.sky-title{position:absolute;inset:0}
-.media{z-index:0;background-position:center;background-size:cover;will-change:transform,opacity}
-.tint{z-index:2;background:linear-gradient(90deg,rgba(8,10,15,.76) 0%,rgba(8,10,15,.35) 50%,rgba(8,10,15,.12) 100%);pointer-events:none}
-.content{position:relative;z-index:8;width:calc(100% - 96px);max-width:1280px;height:100%;margin:auto;display:flex;align-items:center;pointer-events:none}
-.copy{max-width:660px;transform:translate3d(0,calc((.5 - var(--p))*20px),0)}
-.kicker{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#85f2e8;margin:0 0 20px}
-h1{font-size:clamp(54px,7vw,108px);line-height:.88;letter-spacing:-.065em;margin:18px 0 25px;max-width:800px}
-.lede{font-size:clamp(16px,1.6vw,20px);line-height:1.5;max-width:520px;color:rgba(255,255,255,.86);margin:0}
-.rule{display:block;margin-top:28px;width:80px;height:3px;background:linear-gradient(90deg,var(--pink),var(--teal))}
-.tag{position:absolute;z-index:9;bottom:24px;left:max(48px,calc((100% - 1280px)/2));font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#d7e8e8}
-@media(max-width:1280px){.content{width:calc(100% - 80px)}.tag{left:40px}}
-@media(max-width:768px){.content{width:calc(100% - 48px)}.copy{max-width:85%}h1{font-size:clamp(48px,9vw,76px)}.tag{left:24px}.tint{background:linear-gradient(90deg,rgba(8,10,15,.72),rgba(8,10,15,.24))}}
-@media(max-width:390px){.content{width:calc(100% - 36px)}.copy{max-width:100%}h1{font-size:clamp(43px,12vw,54px)}.lede{font-size:15px;line-height:1.45}.kicker{font-size:9px}.tag{left:18px;font-size:8px}}
-@media(max-height:580px){h1{font-size:clamp(35px,5vw,68px);margin:12px 0}.lede{font-size:14px}.rule{margin-top:12px}.tag{bottom:10px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-
-
-.grand-day{background-image:url("assets/grand-day.webp");background-position:center 48%;transform:scale(calc(1.16 - var(--p)*.09)) translateY(calc(-4% + var(--p)*8%));opacity:clamp(0,calc(1.35 - var(--p)*2),1)}
-.grand-dusk{background-image:url("assets/grand-dusk.webp");background-position:center 47%;transform:scale(calc(1.13 - var(--p)*.05)) translateY(calc(-4% + var(--p)*7%));opacity:clamp(0,calc((var(--p) - .27)*2.7),1)}
-.photo-skycopy{position:absolute;inset:0;z-index:1;display:flex;align-items:center;pointer-events:none}
-.photo-skycopy .copy{transform:none;opacity:clamp(0,calc(var(--p)*3.2),1);filter:drop-shadow(0 4px 16px rgba(0,0,0,.4))}
-.photo-skycopy h1{font-size:clamp(52px,7.8vw,118px)}
-.grand-day-front{z-index:3;background:url("assets/grand-day-foreground.webp") center 48%/cover no-repeat;transform:scale(calc(1.16 - var(--p)*.09)) translateY(calc(-4% + var(--p)*8%));opacity:clamp(0,calc(1.35 - var(--p)*2),1)}
-.grand-dusk-front{z-index:4;background:url("assets/grand-dusk-foreground.webp") center 47%/cover no-repeat;transform:scale(calc(1.13 - var(--p)*.05)) translateY(calc(-4% + var(--p)*7%));opacity:clamp(0,calc((var(--p) - .27)*2.7),1)}
-.photo-wash{z-index:5;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,14,.35),transparent 75%)}
-.photo-tag{z-index:7}
-@media(max-width:768px){.photo-skycopy .copy{transform:none}.photo-skycopy h1{font-size:clamp(48px,9vw,76px)}}
-@media(max-width:390px){.photo-skycopy .copy{transform:none}.photo-skycopy h1{font-size:clamp(43px,11.5vw,54px)}.grand-day,.grand-day-front,.grand-dusk,.grand-dusk-front{background-position:53% center}}
-</style>
-<style id="c2dg-filson-responsive">
-:root{--c2-hero-max:1280px;--c2-hero-gutter:clamp(18px,3vw,36px)}
-html,body,button,input,textarea{font-family:"filson-pro","Filson Pro","Filson",Arial,sans-serif!important}
-.content{width:min(calc(100% - 2 * var(--c2-hero-gutter)),var(--c2-hero-max))!important}
-.copy{text-align:left!important;max-width:min(700px,100%)!important}
-.copy p{max-width:640px!important}
-@media(max-width:768px){:root{--c2-hero-gutter:24px}.copy{max-width:100%!important}}
-@media(max-width:390px){:root{--c2-hero-gutter:18px}}
-</style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C2DG Photography Gallery</title>
 <link rel="stylesheet" href="https://use.typekit.net/djs7ght.css">
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#0a0c10;color:#fff;font-family:"filson-pro",Arial,sans-serif}
+.section-kicker{text-transform:uppercase;color:#00BAB4;font-size:12px;letter-spacing:.16em}
+.photo-gallery-section{position:relative;background:#0a0c10;color:#fff;min-height:100vh;padding:10vw 7vw;overflow:hidden}.photo-gallery-shell{width:min(1240px,100%);margin:auto}.photo-gallery-intro{display:grid;grid-template-columns:1fr .7fr;gap:8vw;align-items:end;margin-bottom:70px}.photo-gallery-intro h2{font-size:clamp(56px,9vw,128px);line-height:.82;letter-spacing:-.07em;margin:0}.photo-gallery-intro>p{font-size:18px;line-height:1.55;opacity:.7;margin:0 0 8px}.photo-gallery{display:grid;grid-template-columns:1.25fr .75fr 1fr;grid-template-rows:260px 260px;gap:14px}.photo-tile{position:relative;border:0;padding:0;overflow:hidden;background:#151922;cursor:pointer;text-align:left;color:#fff;min-width:0}.photo-tile-wide,.photo-tile-tall{grid-row:1 / span 2}.photo-tile img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s ease}.photo-tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72));opacity:.78}.photo-tile:hover img,.photo-tile:focus-visible img{transform:scale(1.055);filter:saturate(1.1)}.photo-tile span{position:absolute;z-index:2;left:20px;right:20px;bottom:18px;font-size:12px;letter-spacing:.13em;text-transform:uppercase}.photo-tile span b{font-size:9px;opacity:.5;margin-right:10px}.photo-gallery-note{margin-top:18px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.38}.photo-lightbox{position:fixed;z-index:2000;inset:0;background:rgba(5,7,10,.96);display:none;align-items:center;justify-content:center;padding:6vw}.photo-lightbox.is-open{display:flex}.photo-lightbox img{max-width:86vw;max-height:82vh;object-fit:contain;box-shadow:0 30px 100px rgba(0,0,0,.5);user-select:none;-webkit-user-drag:none}.photo-lightbox-close,.photo-lightbox-arrow{position:absolute;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;backdrop-filter:blur(8px)}.photo-lightbox-close{right:28px;top:22px;width:48px;height:48px;font-size:30px;line-height:1}.photo-lightbox-arrow{top:50%;transform:translateY(-50%);width:56px;height:56px;font-size:28px}.photo-lightbox-prev{left:28px}.photo-lightbox-next{right:28px}.photo-lightbox-meta{position:absolute;left:7vw;right:7vw;bottom:24px;display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.17em;text-transform:uppercase;opacity:.62}.photo-lightbox-title{font-weight:700}.photo-lightbox-count{opacity:.55}.photo-lightbox-dots{position:absolute;left:50%;bottom:23px;transform:translateX(-50%);display:flex;gap:6px}.photo-lightbox-dots button{width:5px;height:5px;border:0;border-radius:50%;padding:0;background:rgba(255,255,255,.3);cursor:pointer}.photo-lightbox-dots button.is-active{background:#fff;transform:scale(1.35)}
+@media(max-width:760px){.photo-gallery-section{padding:25vw 7vw 18vw}.photo-gallery-intro{grid-template-columns:1fr;gap:22px;margin-bottom:35px}.photo-gallery-intro>p{font-size:16px}.photo-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;margin-right:-7vw;padding-right:7vw}.photo-tile,.photo-tile-wide,.photo-tile-tall{flex:0 0 78vw;height:105vw;max-height:520px;scroll-snap-align:start}.photo-gallery::-webkit-scrollbar{height:2px}.photo-gallery::-webkit-scrollbar-thumb{background:rgba(255,255,255,.45)}.photo-lightbox{padding:18px}.photo-lightbox img{max-width:94vw;max-height:76vh}.photo-lightbox-arrow{width:44px;height:44px;font-size:22px}.photo-lightbox-prev{left:12px}.photo-lightbox-next{right:12px}.photo-lightbox-close{right:12px;top:12px}.photo-lightbox-meta{left:18px;right:18px;bottom:20px}.photo-lightbox-dots{bottom:20px}
 
-<!-- V20: Wix Filson Pro family parity, Adobe Fonts supplies the font in this iframe -->
-<style id="c2dg-filson-wix-v20">
-:root{
- --c2-filson-regular:"filson-pro","orig_filson_pro_regular","wfont_4f980b_27af6a8ff32b4618adf991ca5c49b79e","wf_27af6a8ff32b4618adf991ca5",Arial,sans-serif;
- --c2-filson-bold:"filson-pro","orig_filson_pro_bold","wfont_4f980b_0236905e0d2b4384b05cc0f3242d38e4","wf_0236905e0d2b4384b05cc0f32",Arial,sans-serif;
+/* V21: lightbox close stays below Wix native navigation */
+.photo-lightbox-close{
+  top:calc(100px + env(safe-area-inset-top,0px))!important;
+  right:clamp(16px,3vw,42px)!important;
+  z-index:2010!important;
 }
-html,body,button,input,textarea,select{font-family:var(--c2-filson-regular)!important;font-weight:400}
-h1,h2,h3,h4,h5,h6,.hero-copy h1,.chapter-copy h2,.flip-copy h2,.photo-copy h2,
-.work-intro h2,.copy h1,.copy h2,.chapter-glyph{font-family:var(--c2-filson-bold)!important;font-weight:700}
-button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var(--c2-filson-bold)!important;font-weight:700}
-</style>
-</head><body data-page="photography"><main class="hero" style="--p:0"><div class="media grand-day" aria-hidden="true"></div><div class="media grand-dusk" aria-hidden="true"></div><div class="photo-skycopy"><div class="content"><div class="copy"><p class="kicker">C2 Design Group / Photography</p><h1>See it<br>differently.</h1><p class="lede">A fresh perspective, framed with intention. Architecture, spaces, and the details that bring a story to life.</p><span class="rule"></span></div></div></div><div class="photo-wash"></div><div class="tag photo-tag">Architecture / Lifestyle / Detail</div></main><script>
-(()=>{const root=document.querySelector('.hero');let external=false,start=performance.now();const clamp=v=>Math.max(0,Math.min(1,v));function setProgress(v){root.style.setProperty('--p',clamp(v).toFixed(4));root.dispatchEvent(new CustomEvent('c2progress',{detail:clamp(v)}));}
-const params=new URLSearchParams(location.search);const auto=params.get('mode')!=='scroll';
-if(!auto){document.body.style.minHeight='260vh';root.style.position='sticky';root.style.top='0';addEventListener('scroll',()=>{if(!external){let max=Math.max(1,document.documentElement.scrollHeight-innerHeight);setProgress(scrollY/max)}},{passive:true});}
-addEventListener('message',e=>{if(!['https://creative-c2dg.wixstudio.com'].includes(e.origin))return;const d=e.data||{};if(d.channel==='c2dg-page-hero-v1'&&d.type==='SCROLL_PROGRESS'&&Number.isFinite(Number(d.progress))){external=true;setProgress(Number(d.progress));}});
-function tick(t){if(!external&&auto){let p=(t-start)/7000;setProgress(Math.min(1,p));}requestAnimationFrame(tick)}requestAnimationFrame(tick);
-function ready(){parent.postMessage({channel:'c2dg-page-hero-v1',type:'READY',page:document.body.dataset.page},'*')}ready();addEventListener('load',ready);
-})();
-</script><script></script></body></html>
+.photo-lightbox img{max-height:calc(100vh - 205px)!important}
+@media(max-width:760px){
+  .photo-lightbox-close{top:calc(100px + env(safe-area-inset-top,0px))!important}
+  .photo-lightbox img{max-height:calc(100dvh - 195px)!important}
+}
+
+.photo-gallery-section{min-height:auto;padding:clamp(70px,8vw,110px) 24px}
+.photo-gallery-shell{max-width:1280px}
+.photo-tile[hidden]{display:none!important}
+.photo-lightbox-close{top:calc(100px + env(safe-area-inset-top,0px))!important}
+</style></head><body>
+<section id="photography" class="photo-gallery-section" aria-labelledby="photography-title">
+  <div class="photo-gallery-shell">
+    <div class="photo-gallery-intro"><div><p class="section-kicker">Our Work — Photography</p><h2 id="photography-title">See it<br>differently.</h2></div><p>Explore four distinct C2DG photography disciplines. Click any category to open a full-screen gallery, then use the arrows, keyboard, or swipe gestures to move through the work.</p></div>
+    <div class="photo-gallery" role="list">
+      <button class="photo-tile photo-tile-wide" type="button" role="listitem" data-gallery="aerials"><img src="https://static.wixstatic.com/media/beab6e_85c124f713574e499860d4a4333921a8~mv2.jpg" alt="C2DG aerial photography" loading="lazy"><span><b>01</b>Aerials</span></button>
+      <button class="photo-tile photo-tile-tall" type="button" role="listitem" data-gallery="architecture"><img src="https://static.wixstatic.com/media/4f980b_54d12d6345aa4aea9ac765861fad02dd~mv2.jpg" alt="C2DG architecture photography" loading="lazy"><span><b>02</b>Architecture</span></button>
+      <button class="photo-tile" type="button" role="listitem" data-gallery="events"><img src="https://static.wixstatic.com/media/47f173_5522417e60a44dd39e4e39ea4421d6c3~mv2.jpg" alt="C2DG events and products photography" loading="lazy"><span><b>03</b>Events + Products</span></button>
+      <button class="photo-tile" type="button" role="listitem" data-gallery="people"><img src="https://static.wixstatic.com/media/47f173_5ef293983bf446c9adc645a702a4eef8~mv2.jpg" alt="C2DG people photography" loading="lazy"><span><b>04</b>People</span></button>
+    </div>
+    
+    <div class="photo-gallery-note">Click a discipline to open the full gallery • Swipe on touch devices • ← / → on keyboard</div>
+  </div>
+</section>
+<div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
+  <button class="photo-lightbox-close" type="button" aria-label="Close photography viewer">×</button>
+  <button class="photo-lightbox-arrow photo-lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+  <img id="photoLightboxImage" src="" alt="">
+  <button class="photo-lightbox-arrow photo-lightbox-next" type="button" aria-label="Next photo">›</button>
+  <div class="photo-lightbox-meta"><span class="photo-lightbox-title" id="photoLightboxTitle"></span><span class="photo-lightbox-count" id="photoLightboxCount"></span></div>
+  <div class="photo-lightbox-dots" id="photoLightboxDots"></div>
+</div>
+
+<script>
+const galleries={
+ aerials:{title:'Aerials',images:[
+  'https://static.wixstatic.com/media/beab6e_85c124f713574e499860d4a4333921a8~mv2.jpg','https://static.wixstatic.com/media/47f173_8c2ceed23bb04dcca8f6ef332c13ef9~mv2.jpg','https://static.wixstatic.com/media/47f173_f3622f513ce3453f8e1a1cffcab27015~mv2.jpg','https://static.wixstatic.com/media/beab6e_831179829bc8479c858e12f5dd6575eb~mv2.jpg','https://static.wixstatic.com/media/47f173_7bd2812abffa4ac487162b386fd6a6a3~mv2.jpg','https://static.wixstatic.com/media/beab6e_f30cfc020d0a469f96f1a5e22837f0e7~mv2.jpg'
+ ]},
+ architecture:{title:'Architecture',images:[
+  'https://static.wixstatic.com/media/4f980b_54d12d6345aa4aea9ac765861fad02dd~mv2.jpg','https://static.wixstatic.com/media/4f980b_7cb46f71555b4ede83c3d409d8984294~mv2.jpg','https://static.wixstatic.com/media/4f980b_86c83e3590fe4520b633402b1bbbabe2~mv2.jpg','https://static.wixstatic.com/media/4f980b_4474578d7c6d4a96a0c9cf9f1a54d9e4~mv2.jpg','https://static.wixstatic.com/media/4f980b_7733c83e8fb744a6b3621c28dde4a16e~mv2.jpg','https://static.wixstatic.com/media/4f980b_580a7f5c2042438ab15484c0bfed3163~mv2.jpg','https://static.wixstatic.com/media/4f980b_8b152f359484446592a584401e364b59~mv2.jpg','https://static.wixstatic.com/media/4f980b_34e84cc07def4dc0af49daada1c5c7ea~mv2.jpg'
+ ]},
+ people:{title:'People',images:[
+  'https://static.wixstatic.com/media/47f173_5ef293983bf446c9adc645a702a4eef8~mv2.jpg','https://static.wixstatic.com/media/47f173_0c454c35c18741ceaff6ccd7197af904~mv2.jpg','https://static.wixstatic.com/media/47f173_986f43fade3e44deaa0b48a56f5f201b~mv2.jpg','https://static.wixstatic.com/media/47f173_a2324aacd9f84b50ac3f10c97893b950~mv2.jpg','https://static.wixstatic.com/media/47f173_3fe10769172d438d8cf11fc6064f7646~mv2.jpg','https://static.wixstatic.com/media/47f173_f78a5a483d854bc3849f1fb0f035db6e~mv2.jpg','https://static.wixstatic.com/media/47f173_96c8c17a71694326aed802a7d76c37be~mv2.jpg','https://static.wixstatic.com/media/beab6e_69571a33efd14be4907c34ac615f7e8f~mv2.jpg'
+ ]},
+ events:{title:'Events + Products',images:[
+  'https://static.wixstatic.com/media/47f173_5522417e60a44dd39e4e39ea4421d6c3~mv2.jpg','https://static.wixstatic.com/media/4f980b_a34f00887da543aeaafa1f4d27573392~mv2.jpg','https://static.wixstatic.com/media/beab6e_0eed98e2e95a47c992f753bdf918a0e6~mv2.jpg','https://static.wixstatic.com/media/beab6e_5cd95eb3fde94bb6ae70d5c530dd024d~mv2.jpg','https://static.wixstatic.com/media/4f980b_4192380998284181814ead137d9c4cfe~mv2.jpg','https://static.wixstatic.com/media/4f980b_f647a9ae4bad4d5b9c973abb2797f1db~mv2.jpg','https://static.wixstatic.com/media/4f980b_212ac90fe0c643508d9eb2d883f51404~mv2.jpg','https://static.wixstatic.com/media/beab6e_e92987a5c6f14d5792b53423a6a43373~mv2.jpg'
+ ]}
+};
+const photoLightbox=document.querySelector('#photoLightbox'),photoLightboxImage=document.querySelector('#photoLightboxImage'),photoLightboxTitle=document.querySelector('#photoLightboxTitle'),photoLightboxCount=document.querySelector('#photoLightboxCount'),photoLightboxDots=document.querySelector('#photoLightboxDots');let galleryKey=null,galleryIndex=0,touchStartX=0;
+function renderGallery(){const g=galleries[galleryKey];if(!g)return;photoLightboxImage.src=g.images[galleryIndex];photoLightboxImage.alt=`C2DG ${g.title} photograph ${galleryIndex+1}`;photoLightboxTitle.textContent=g.title;photoLightboxCount.textContent=`${String(galleryIndex+1).padStart(2,'0')} / ${String(g.images.length).padStart(2,'0')}`;photoLightboxDots.innerHTML=g.images.map((_,i)=>`<button type="button" class="${i===galleryIndex?'is-active':''}" aria-label="Photo ${i+1}"></button>`).join('');photoLightboxDots.querySelectorAll('button').forEach((b,i)=>b.addEventListener('click',()=>{galleryIndex=i;renderGallery()}));}
+/* Failed external Wix media are skipped, so the viewer never stalls on a broken image. */
+photoLightboxImage?.addEventListener('error',()=>{
+  const g=galleries[galleryKey];if(!g||!g.images.length)return;
+  const failed=g.images[galleryIndex];
+  g.images.splice(galleryIndex,1);
+  if(!g.images.length){closeGallery();return}
+  galleryIndex%=g.images.length;
+  renderGallery();
+});
+document.querySelectorAll('.photo-tile img').forEach(img=>{
+  img.addEventListener('error',()=>{
+    const tile=img.closest('.photo-tile');
+    if(tile){tile.hidden=true;tile.setAttribute('aria-hidden','true')}
+  });
+});
+function openGallery(key){galleryKey=key;galleryIndex=0;renderGallery();photoLightbox.classList.add('is-open');photoLightbox.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeGallery(){photoLightbox.classList.remove('is-open');photoLightbox.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+function stepGallery(dir){if(!galleryKey)return;const g=galleries[galleryKey];galleryIndex=(galleryIndex+dir+g.images.length)%g.images.length;renderGallery()}
+document.querySelectorAll('.photo-tile').forEach(tile=>tile.addEventListener('click',()=>openGallery(tile.dataset.gallery)));
+document.querySelector('.photo-lightbox-close')?.addEventListener('click',closeGallery);document.querySelector('.photo-lightbox-prev')?.addEventListener('click',()=>stepGallery(-1));document.querySelector('.photo-lightbox-next')?.addEventListener('click',()=>stepGallery(1));photoLightbox?.addEventListener('click',e=>{if(e.target===photoLightbox)closeGallery()});photoLightboxImage?.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});photoLightboxImage?.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>45)stepGallery(dx<0?1:-1)},{passive:true});document.addEventListener('keydown',e=>{if(!photoLightbox.classList.contains('is-open'))return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowRight')stepGallery(1);if(e.key==='ArrowLeft')stepGallery(-1)});
+
+
+
+</script></body></html>

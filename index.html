@@ -22,7 +22,7 @@ section{scroll-margin-top:0}
 .site-nav{position:fixed;z-index:1000;top:18px;left:50%;transform:translateX(-50%);width:min(1220px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;padding:9px 10px 9px 18px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(30,21,69,.72);backdrop-filter:blur(18px) saturate(145%);box-shadow:0 16px 50px rgba(0,0,0,.22)} .site-nav.nav-expanded{border-radius:999px;box-shadow:0 16px 50px rgba(0,0,0,.22)}.site-nav.nav-expanded .work-menu{top:calc(100% + 10px);border-top:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(30,21,69,.94);box-shadow:0 20px 55px rgba(0,0,0,.28)}
 .nav-brand{color:#fff;text-decoration:none;font-weight:800;letter-spacing:-.045em;font-size:17px;white-space:nowrap}
 .nav-brand span{display:inline-block;margin-left:7px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.48;vertical-align:middle}
-.nav-links{display:flex;align-items:center;gap:3px}.nav-work{position:relative}.nav-work>a{display:flex;align-items:center;gap:7px}.nav-work>a:after{content:"+";font-size:11px;opacity:.55;transition:transform .25s}.nav-work.is-open>a:after{transform:rotate(45deg)}.work-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:245px;padding:9px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(30,21,69,.94);backdrop-filter:blur(18px) saturate(145%);box-shadow:0 20px 55px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .3s ease,transform .3s ease,visibility .3s}.nav-work.is-open .work-menu,.nav-work:hover .work-menu,.nav-work:focus-within .work-menu{opacity:1;visibility:visible;transform:none}.work-menu.is-fading{opacity:1}.nav-work:hover .work-menu,.nav-work:focus-within .work-menu{opacity:1}.work-menu a{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:12px;font-size:9px} .work-menu a{gap:12px;justify-content:flex-start}.work-menu .menu-num{flex:0 0 22px;font-size:9px;letter-spacing:.16em;opacity:.48;font-variant-numeric:tabular-nums}.work-menu .menu-num + *{margin-left:0}.work-menu a:hover{background:rgba(255,255,255,.08)}.work-submenu{position:relative}.work-submenu>a:after{content:"→";opacity:.45}.work-submenu-list{position:absolute;left:calc(100% + 7px);top:-9px;min-width:210px;padding:9px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(30,21,69,.96);backdrop-filter:blur(18px);opacity:0;visibility:hidden;transform:translateX(-6px);transition:.25s}.work-submenu:hover .work-submenu-list,.work-submenu:focus-within .work-submenu-list{opacity:1;visibility:visible;transform:none}
+.nav-links{display:flex;align-items:center;gap:3px}.nav-work{position:relative}.nav-work>a{display:flex;align-items:center;gap:7px}.nav-work>a:after{content:"+";font-size:11px;opacity:.55;transition:transform .25s}.nav-work.is-open>a:after{transform:rotate(45deg)}.work-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:245px;padding:9px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(30,21,69,.94);backdrop-filter:blur(18px) saturate(145%);box-shadow:0 20px 55px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .3s ease,transform .3s ease,visibility .3s}.nav-work.is-open .work-menu,.nav-work:hover .work-menu,.nav-work:focus-within .work-menu{opacity:1;visibility:visible;transform:none}.work-menu.is-fading{opacity:1}.nav-work:hover .work-menu,.nav-work:focus-within .work-menu{opacity:1}.work-menu a{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border-radius:12px;font-size:9px} .work-menu a{gap:12px;justify-content:flex-start}.work-menu .menu-num{flex:0 0 22px;font-size:9px;letter-spacing:.16em;opacity:.48;font-variant-numeric:tabular-nums}.work-menu .menu-num + *{margin-left:0}.work-menu a:hover{background:rgba(255,255,255,.08)}.work-submenu{position:relative}.work-submenu>a:after{content:"›";opacity:.45;font-family:Arial,sans-serif;font-variant-emoji:text}.work-submenu-list{position:absolute;left:calc(100% + 7px);top:-9px;min-width:210px;padding:9px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(30,21,69,.96);backdrop-filter:blur(18px);opacity:0;visibility:hidden;transform:translateX(-6px);transition:.25s}.work-submenu:hover .work-submenu-list,.work-submenu:focus-within .work-submenu-list{opacity:1;visibility:visible;transform:none}
 
 .nav-links a,.nav-cta{color:rgba(255,255,255,.72);text-decoration:none;font-size:10px;letter-spacing:.11em;text-transform:uppercase;padding:10px 13px;border-radius:999px;transition:.25s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
@@ -199,7 +199,12 @@ section{scroll-margin-top:0}
 /* C2DG HOMEPAGE V11 — unified content widths and CTA system */
 :root{--c2-content-max:1280px;--c2-gutter:48px}
 .c2-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:max-content;max-width:100%;min-height:44px;margin-top:26px;padding:14px 22px;border:0;border-radius:999px;background:var(--c2-pink);color:#fff!important;font-size:11px;font-weight:700;letter-spacing:.09em;line-height:1.35;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;position:relative;z-index:20;pointer-events:auto}
-.c2-cta:after{content:'↗';font-size:17px;font-weight:400;line-height:1}
+.c2-cta:after{
+content:"";display:inline-block;width:15px;height:15px;flex:0 0 15px;
+background-color:currentColor;
+-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 19 19 5M7 5h12v12' fill='none' stroke='black' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 19 19 5M7 5h12v12' fill='none' stroke='black' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
 .c2-cta:hover{background:#c91c46;transform:translateY(-2px);box-shadow:0 12px 28px rgba(238,38,82,.24)}
 .c2-cta:focus-visible{outline:3px solid var(--c2-teal);outline-offset:4px}
 .hero-copy,.chapter-copy,.flip-copy,.photo-copy{width:min(100%,720px);max-width:min(100%,720px)}
@@ -372,6 +377,16 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
 @media(max-width:760px){
   .photo-lightbox-close{top:calc(100px + env(safe-area-inset-top,0px))!important}
   .photo-lightbox img{max-height:calc(100dvh - 195px)!important}
+}
+
+/* V22 mobile arrow icon & CTA touch targets */
+.c2-cta{touch-action:manipulation;isolation:isolate;pointer-events:auto!important;z-index:100!important}
+.hero-copy,.chapter-copy,.flip-copy,.photo-copy,.work-intro-inner,.standard-copy{pointer-events:auto!important}
+.c2-cta:active{transform:scale(.98)}
+@media(max-width:768px){
+ .c2-cta{min-height:48px;max-width:100%;white-space:normal}
+ .photo-gallery-shell{width:100%;max-width:1280px}
+ .photo-lightbox-close{top:calc(105px + env(safe-area-inset-top,0px))!important}
 }
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
@@ -570,7 +585,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
       <p>Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p>
       <p>Whether the need is a new identity, a marketing campaign, aerial photography, a digital experience, or a complete visual content system, C2 Design Group creates work designed to move people and projects forward.</p>
       <a class="c2-cta" data-c2-page="mission" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">Explore our mission</a>
-      <div class="mission-mark" aria-hidden="true">↗</div>
+      <div class="mission-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M7 5h12v12"/></svg></div>
     </div>
   </div>
 </section>
@@ -817,7 +832,7 @@ const C2_WIX_BASE = 'https://creative-c2dg.wixstudio.com/my-site-2';
 const C2_WIX_PATHS = {
   work: '/our-work',
   brands: '/branding',
-  print: '/digial-print-media',
+  print: '/digital-print-media',
   photography: '/photography',
   videography: '/videography',
   story: '/our-story',
@@ -828,7 +843,16 @@ const C2_PAGE_URLS = Object.fromEntries(
 );
 document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
   const url=C2_PAGE_URLS[link.dataset.c2Page];
-  if(url){ link.href=url; link.target='_top'; link.rel='noopener'; }
+  if(url){
+    link.href=url;
+    link.target='_blank'; // nested Wix HTML iframe cannot reliably navigate top frame
+    link.rel='noopener noreferrer';
+    link.addEventListener('click', event=>{
+      // Send navigation request for optional Wix Velo same-tab handling.
+      // Keep normal link behavior as fallback: opens a new tab.
+      try{window.parent.postMessage({channel:'c2dg-animation-v1',type:'NAVIGATE',url},'*')}catch(e){}
+    });
+  }
 });
 
 /* =========================================================

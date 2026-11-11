@@ -1009,36 +1009,21 @@ const C2_WIX_PATHS = {
   mission: '/our-mission'
 };
 const C2_PAGE_URLS = Object.fromEntries(
-  Object.entries(C2_WIX_PATHS).map(([key,path])=>[key,C2_WIX_BASE+path+'?rc=test-site'])
+  Object.entries(C2_WIX_PATHS).map(([key,path]) => [
+    key,
+    new URL(path.replace(/^\/+/, ''), C2_WIX_BASE.replace(/\/+$/, '') + '/').href + '?rc=test-site'
+  ])
 );
+
+// Navigate the TOP-LEVEL Wix page directly, not the GitHub iframe.
+// Avoid the previous Velo message/fallback combination that could
+// leave navigation inside the embedded frame or duplicate the site path.
 document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
-  const url=C2_PAGE_URLS[link.dataset.c2Page];
-  if(url){
-    link.href=url;
-    // Wix Velo owns same-tab navigation. The actual href remains usable.
-    link.target='_self';
-    link.removeAttribute('rel');
-    link.addEventListener('click', event=>{
-      if(event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button!==0)return;
-      event.preventDefault();
-      // A direct click can safely navigate the Wix page through Velo's wixLocation.to().
-      // Fallback opens the correct Wix URL in the existing embedded frame if the
-      // Velo receiver has not been installed; never create a new tab.
-      const requestId='nav-'+Date.now();
-      let acknowledged=false;
-      const receiveAck=e=>{
-        if(e.data?.channel==='c2dg-animation-v1' && e.data.type==='NAVIGATE_ACK' && e.data.requestId===requestId){
-          acknowledged=true;removeEventListener('message',receiveAck);
-        }
-      };
-      addEventListener('message',receiveAck);
-      window.parent.postMessage({channel:'c2dg-animation-v1',type:'NAVIGATE',url,requestId},'*');
-      setTimeout(()=>{
-        removeEventListener('message',receiveAck);
-        if(!acknowledged) window.location.assign(url);
-      },1200);
-    });
-  }
+  const url = C2_PAGE_URLS[link.dataset.c2Page];
+  if (!url) return;
+  link.href = url;
+  link.target = '_top';
+  link.removeAttribute('rel');
 });
 
 /* =========================================================

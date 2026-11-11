@@ -1070,6 +1070,36 @@ window.addEventListener('message',event=>{
 });
 window.addEventListener('load',()=>window.parent.postMessage({channel:'c2dg-animation-v1',type:'READY'},'*'));
 
+/* V27: hand off downward wheel/touch scrolling at the actual iframe bottom.
+   No preventDefault: internal scrolling and all animations remain native. */
+(()=>{
+ const channel='c2dg-animation-v1';
+ let lastHandoff=0, touchStartY=null;
+ const atBottom=()=>{
+   const root=document.scrollingElement||document.documentElement;
+   return root.scrollTop+root.clientHeight>=root.scrollHeight-8;
+ };
+ function handoff(){
+   const now=performance.now();
+   if(!atBottom()||now-lastHandoff<1400)return;
+   if(document.querySelector('.photo-lightbox.is-open'))return;
+   lastHandoff=now;
+   window.parent.postMessage({channel,type:'SCROLL_HANDOFF',direction:'down'},'*');
+ }
+ addEventListener('wheel',event=>{
+   if(event.deltaY>4 && !event.ctrlKey)handoff();
+ },{passive:true});
+ addEventListener('touchstart',event=>{
+   touchStartY=event.touches.length===1?event.touches[0].clientY:null;
+ },{passive:true});
+ addEventListener('touchend',event=>{
+   if(touchStartY===null||!event.changedTouches.length)return;
+   const dy=touchStartY-event.changedTouches[0].clientY;
+   touchStartY=null;
+   if(dy>35)handoff();
+ },{passive:true});
+})();
+
 /* Videography background video: mobile loads ONLY on deliberate user play. */
 const VIDEO_URL='https://video.wixstatic.com/video/47f173_c6e8c68c65244c438dab9c88472930d7/1080p/mp4/file.mp4';
 const c2Video=document.getElementById('c2VideoBg');

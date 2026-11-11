@@ -713,6 +713,7 @@ function loadHeroModel(){new GLTFLoader().load(C2_MODEL_URL,(gltf)=>{
   }
   loading.style.display='none';
   updateHero();
+  requestHeroRender();
 },undefined,(e)=>{console.error(e);loading.textContent='C2 model failed to load';});}
 if(innerWidth<=768){requestAnimationFrame(()=>setTimeout(loadHeroModel,180))}else{loadHeroModel()}
 
@@ -730,22 +731,32 @@ function updateHero(){
   document.querySelector('#scrollProgress').style.width=(p*100)+'%';
 }
 
-addEventListener('resize',()=>{
-  renderer.setSize(canvas.clientWidth,canvas.clientHeight,false); camera.aspect=canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix();
-});
-let heroIsVisible=true;
-new IntersectionObserver(entries=>{heroIsVisible=entries[0]?.isIntersecting??false;if(heroIsVisible && !heroRAF)heroRAF=requestAnimationFrame(renderHero)},{rootMargin:"200px"}).observe(document.querySelector("#hero"));
-let lastHeroFrame=0;let heroRAF=0;
-function renderHero(now=0){
- heroRAF=0;
-  if(!document.hidden && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && heroIsVisible
-    && (innerWidth>=768 || now-lastHeroFrame>=42)){
-    renderer.render(scene,camera);lastHeroFrame=now;
-  }
-  if(heroIsVisible)heroRAF=requestAnimationFrame(renderHero);
+// V26: The hero is scroll-driven, not time-driven. Draw only after a
+// model load, viewport change, or scroll update. No permanent RAF loop.
+let heroIsVisible=false;
+let heroRAF=0;
+function requestHeroRender(){
+  if(heroRAF || !heroIsVisible || document.hidden)return;
+  heroRAF=requestAnimationFrame(()=>{
+    heroRAF=0;
+    if(heroIsVisible && !document.hidden)renderer.render(scene,camera);
+  });
 }
-heroRAF=requestAnimationFrame(renderHero);
-
+new IntersectionObserver(entries=>{
+  heroIsVisible=entries[0]?.isIntersecting??false;
+  if(heroIsVisible)requestHeroRender();
+  else if(heroRAF){cancelAnimationFrame(heroRAF);heroRAF=0;}
+},{rootMargin:'100px'}).observe(document.querySelector('#hero'));
+addEventListener('resize',()=>{
+  renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1:1.5));
+  renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);
+  camera.aspect=canvas.clientWidth/canvas.clientHeight;
+  camera.updateProjectionMatrix();
+  requestHeroRender();
+});
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden)requestHeroRender();
+});
 
 /* =========================================================
    SCROLL-DRIVEN PRINT -> DIGITAL DEVICE
@@ -804,7 +815,7 @@ const photoBg=document.querySelector('#photoBg');const photoSky=document.querySe
 const droneRenderer=new THREE.WebGLRenderer({canvas:droneCanvas,antialias:true,alpha:true,powerPreference:'high-performance'});droneRenderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1:1.5));droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneRenderer.outputColorSpace=THREE.SRGBColorSpace;droneRenderer.toneMapping=THREE.ACESFilmicToneMapping;droneRenderer.toneMappingExposure=1.2;
 const droneScene=new THREE.Scene();const droneCamera=new THREE.PerspectiveCamera(42,droneCanvas.clientWidth/droneCanvas.clientHeight,.01,1000);droneCamera.position.set(0,1.4,18);droneCamera.lookAt(0,1.4,0);droneScene.add(new THREE.HemisphereLight(0xffffff,0x23313a,2.6));const dk=new THREE.DirectionalLight(0xffffff,4);dk.position.set(6,10,7);droneScene.add(dk);const df=new THREE.DirectionalLight(0x79a9c2,1.8);df.position.set(-7,4,-5);droneScene.add(df);
 const flightGroup=new THREE.Group();droneScene.add(flightGroup);let droneRoot=null,droneReady=false,droneRotors=[];const DRONE_MODEL_URL='./models/drone.glb';
-new GLTFLoader().load(DRONE_MODEL_URL,gltf=>{droneRoot=gltf.scene;droneRoot.scale.setScalar(1.0);/* model correction: rotate the aircraft so rotor discs are horizontal */droneRoot.rotation.x=Math.PI/2;flightGroup.add(droneRoot);droneRoot.traverse(o=>{if(/^ROTOR_/.test(o.name))droneRotors.push(o)});droneReady=true;droneLoading.style.display='none';updateDrone()},xhr=>{if(xhr.total)droneLoading.textContent='Loading aerial experience… '+Math.round(xhr.loaded/xhr.total*100)+'%'},e=>{console.error(e);droneLoading.textContent='Place drone.glb in ./models/'});
+new GLTFLoader().load(DRONE_MODEL_URL,gltf=>{droneRoot=gltf.scene;droneRoot.scale.setScalar(1.0);/* model correction: rotate the aircraft so rotor discs are horizontal */droneRoot.rotation.x=Math.PI/2;flightGroup.add(droneRoot);droneRoot.traverse(o=>{if(/^ROTOR_/.test(o.name))droneRotors.push(o)});droneReady=true;droneLoading.style.display='none';updateDrone();requestDroneRender()},xhr=>{if(xhr.total)droneLoading.textContent='Loading aerial experience… '+Math.round(xhr.loaded/xhr.total*100)+'%'},e=>{console.error(e);droneLoading.textContent='Place drone.glb in ./models/'});
 function droneProgressValue(){const r=photoSection.getBoundingClientRect();const travel=photoSection.offsetHeight-innerHeight;return travel>0?THREE.MathUtils.clamp(-r.top/travel,0,1):0}
 function updateDrone(){
   if(updateDrone.lastCaptureIndex===undefined) updateDrone.lastCaptureIndex=-1;
@@ -814,7 +825,7 @@ function updateDrone(){
   flightGroup.position.set(THREE.MathUtils.clamp(THREE.MathUtils.lerp(a[0],b[0],e),-5.0,5.0),THREE.MathUtils.lerp(a[1],b[1],e),THREE.MathUtils.lerp(a[2],b[2],e));
   const dx=b[0]-a[0],dy=b[1]-a[1];
   flightGroup.rotation.set(THREE.MathUtils.clamp(dy*.035,-.10,.10),THREE.MathUtils.clamp(dx*.014,-.12,.12),THREE.MathUtils.clamp(-dx*.024,-.20,.20));
-  const spin=performance.now()*.035;droneRotors.forEach((r,n)=>r.rotation.z=spin*(n%2?-1:1));
+  // Rotor animation is updated by the visibility-gated render loop.
   const bgX=THREE.MathUtils.lerp(-7,7,p),skyX=THREE.MathUtils.lerp(9,-9,p);photoBg.style.transform=`translate3d(${bgX}%,0,0) scale(1.04)`;photoSky.style.transform=`translate3d(${skyX}%,0,0) scale(1.06)`;
   const captures=[.25,.5,.75];
   if(captureFlash){
@@ -835,19 +846,46 @@ function updateDrone(){
   }
   droneProgress.style.width=(p*100)+'%';
 }
-addEventListener('resize',()=>{droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);droneCamera.aspect=droneCanvas.clientWidth/droneCanvas.clientHeight;droneCamera.updateProjectionMatrix();updateDrone()});let droneIsVisible=false;
-new IntersectionObserver(entries=>{droneIsVisible=entries[0]?.isIntersecting??false;if(droneIsVisible && !droneRAF){droneRAF=requestAnimationFrame(renderDrone)}},{rootMargin:"200px"}).observe(document.querySelector("#drone"));
-let lastDroneFrame=0;let droneRAF=0;
-function renderDrone(now=0){
- droneRAF=0;
- if(!document.hidden && droneIsVisible && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-   && (innerWidth>=768 || now-lastDroneFrame>=42)){
-   droneRenderer.render(droneScene,droneCamera);lastDroneFrame=now;
- }
- if(droneIsVisible)droneRAF=requestAnimationFrame(renderDrone);
+// V26: The drone's rotors need motion while visible; throttle to 24 FPS,
+// and stop scheduling entirely when offscreen or the tab is hidden.
+let droneIsVisible=false;
+let droneRAF=0;
+let lastDroneFrame=0;
+const droneFrameInterval=1000/24;
+function requestDroneRender(){
+  if(droneRAF || !droneIsVisible || document.hidden)return;
+  droneRAF=requestAnimationFrame(renderDrone);
 }
-
-
+function renderDrone(now){
+  droneRAF=0;
+  if(!droneIsVisible || document.hidden)return;
+  if(now-lastDroneFrame>=droneFrameInterval){
+    if(droneReady){
+      const spin=now*.035;
+      droneRotors.forEach((rotor,n)=>{rotor.rotation.z=spin*(n%2?-1:1)});
+    }
+    droneRenderer.render(droneScene,droneCamera);
+    lastDroneFrame=now;
+  }
+  requestDroneRender();
+}
+new IntersectionObserver(entries=>{
+  droneIsVisible=entries[0]?.isIntersecting??false;
+  if(droneIsVisible)requestDroneRender();
+  else if(droneRAF){cancelAnimationFrame(droneRAF);droneRAF=0;}
+},{rootMargin:'100px'}).observe(photoSection);
+addEventListener('resize',()=>{
+  droneRenderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1:1.5));
+  droneRenderer.setSize(droneCanvas.clientWidth,droneCanvas.clientHeight,false);
+  droneCamera.aspect=droneCanvas.clientWidth/droneCanvas.clientHeight;
+  droneCamera.updateProjectionMatrix();
+  updateDrone();
+  requestDroneRender();
+});
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden)requestDroneRender();
+  else if(droneRAF){cancelAnimationFrame(droneRAF);droneRAF=0;}
+});
 
  updateDroneIfReady=updateDrone;
  updateDrone();
@@ -900,7 +938,7 @@ const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isInte
 let c2ScrollFrame=0;
 function c2UpdateVisibleScrollEffects(){
  c2ScrollFrame=0;
- if(heroIsVisible)updateHero();
+ if(heroIsVisible){updateHero();requestHeroRender();}
  const flipRect=flipSection.getBoundingClientRect();
  if(flipRect.bottom>-innerHeight*.4 && flipRect.top<innerHeight*1.4)updateFlipbook();
  updateDroneIfReady();

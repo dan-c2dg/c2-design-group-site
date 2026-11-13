@@ -537,6 +537,12 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
  #videography .chapter-copy h2{max-width:560px!important}
  #videography .chapter-copy h2 .video-title-line{display:block}
 }
+
+/* V33 — Hero-only desktop refinement. Narrow supporting paragraph for
+   more balanced wrapping; retain all other section layout and breakpoints. */
+@media (min-width:1025px){
+  .hero-copy p:last-child{max-width:475px!important;}
+}
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
@@ -773,9 +779,9 @@ function updateHero(){
   if(heroModel){
     heroModel.rotation.y = p*Math.PI*1.8;
     heroModel.position.y = Math.sin(p*Math.PI)*.28;
-    // V32: shift only the desktop C2 icon toward the right edge of the 1222px Wix nav rail.
+    // V33: bring desktop C2 icon back inside the right edge of the Wix navigation rail.
     // Keep tablet/mobile composition and existing animation unchanged.
-    heroModel.position.x = innerWidth > 1024 ? 2.35 : 0;
+    heroModel.position.x = innerWidth > 1024 ? 1.45 : 0;
   }
   document.querySelector('#scrollProgress').style.width=(p*100)+'%';
 }

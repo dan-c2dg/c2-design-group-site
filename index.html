@@ -492,25 +492,50 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
  .photo-sky{background-image:url("images/sky-mobile.webp")!important}
 }
 
-/* V30 — desktop-only alignment refinements for the Wix navigation rail.
-   Preserve all V27 scrolling, animation, gallery and mobile behavior. */
-@media (min-width:1281px){
-  .work-intro-inner,
-  .standard-inner{
-    width:100%!important;
-    max-width:1157px!important;
-    margin-inline:auto!important;
-  }
-  /* Section content starts inside the established navigation rail. */
-  #branding .chapter-copy{padding-left:68px!important;box-sizing:border-box}
-  #design-flipbook .flip-copy{padding-left:65px!important;box-sizing:border-box}
-  #drone .photo-copy{
-    left:calc(var(--c2-edge) + 68px)!important;
-    width:min(570px,calc(var(--c2-rail) * .52 - 68px))!important;
-  }
-  #videography .chapter-copy{padding-left:68px!important;box-sizing:border-box}
-  /* Reduce the book slightly, retaining its original scroll-driven transforms. */
-  #flipbook-stack{width:min(36vw,440px)!important}
+/* V31 — one centered 1222px desktop rail matching native Wix navigation.
+   Avoid cumulative left padding: every section uses the SAME left/right edges. */
+@media (min-width:1025px){
+ :root{
+   --c2-content-max:1222px;
+   --c2-rail:min(1222px,calc(100% - 2 * var(--c2-gutter)));
+   --c2-edge:max(var(--c2-gutter),calc((100% - 1222px)/2));
+ }
+ /* All headline and body columns start on the exact same rail edge. */
+ .hero-copy{left:var(--c2-edge)!important;right:auto!important;
+   width:min(610px,calc(var(--c2-rail) * .51))!important}
+ .work-intro-inner,.standard-inner,.photo-gallery-shell{
+   width:100%!important;max-width:1222px!important;margin-inline:auto!important;
+ }
+ .work-intro,.standard,.photo-gallery-section{
+   padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important;
+ }
+ .chapter-inner{padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important}
+ #branding .chapter-copy,#videography .chapter-copy{
+   padding-left:0!important;margin-left:0!important;
+   width:min(620px,calc(var(--c2-rail) * .51))!important;
+ }
+ #design-flipbook .flip-grid{
+   padding-left:var(--c2-edge)!important;padding-right:var(--c2-edge)!important;
+ }
+ #design-flipbook .flip-copy{
+   left:var(--c2-edge)!important;padding-left:0!important;
+   width:min(595px,calc(var(--c2-rail) * .49))!important;
+ }
+ #flipbook-stack{right:var(--c2-edge)!important;width:min(410px,calc(var(--c2-rail) * .335))!important}
+ #digital-device{right:var(--c2-edge)!important;width:min(445px,calc(var(--c2-rail) * .365))!important}
+ #drone .photo-copy{
+   left:var(--c2-edge)!important;padding-left:0!important;
+   width:min(610px,calc(var(--c2-rail) * .50))!important;
+ }
+ /* The gallery was expanding because its outer section and shell used different rails. */
+ .photo-gallery-shell{max-width:1222px!important}
+ /* Align headline columns with the TOP of their companion copy. */
+ #our-story .standard-inner,#our-mission .standard-inner{align-items:start!important}
+ #our-story .standard-inner>div:first-child,
+ #our-mission .standard-inner>div:first-child{align-self:start!important}
+ /* Force intentional title break without changing the wording. */
+ #videography .chapter-copy h2{max-width:560px!important}
+ #videography .chapter-copy h2 .video-title-line{display:block}
 }
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
@@ -646,7 +671,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div class="chapter-inner">
     <div class="chapter-copy reveal">
       <div class="section-kicker">Our Work — Videography</div>
-      <h2>Give the story a pulse.</h2>
+      <h2><span class="video-title-line">Give the story</span> <span class="video-title-line">a pulse.</span></h2>
       <p>Brand films, property videos, project documentation, social content, and motion graphics help audiences understand not just what you do, but why it matters.</p>
       <a class="c2-cta" data-c2-page="videography" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how we elevate Videography</a>
     </div>

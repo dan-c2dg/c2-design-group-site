@@ -491,6 +491,27 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
  .photo-bg{background-image:url("images/buildings-front-mobile.webp")!important}
  .photo-sky{background-image:url("images/sky-mobile.webp")!important}
 }
+
+/* V30 — desktop-only alignment refinements for the Wix navigation rail.
+   Preserve all V27 scrolling, animation, gallery and mobile behavior. */
+@media (min-width:1281px){
+  .work-intro-inner,
+  .standard-inner{
+    width:100%!important;
+    max-width:1157px!important;
+    margin-inline:auto!important;
+  }
+  /* Section content starts inside the established navigation rail. */
+  #branding .chapter-copy{padding-left:68px!important;box-sizing:border-box}
+  #design-flipbook .flip-copy{padding-left:65px!important;box-sizing:border-box}
+  #drone .photo-copy{
+    left:calc(var(--c2-edge) + 68px)!important;
+    width:min(570px,calc(var(--c2-rail) * .52 - 68px))!important;
+  }
+  #videography .chapter-copy{padding-left:68px!important;box-sizing:border-box}
+  /* Reduce the book slightly, retaining its original scroll-driven transforms. */
+  #flipbook-stack{width:min(36vw,440px)!important}
+}
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
@@ -1009,25 +1030,36 @@ const C2_WIX_PATHS = {
   mission: '/our-mission'
 };
 const C2_PAGE_URLS = Object.fromEntries(
-  Object.entries(C2_WIX_PATHS).map(([key,path]) => [
-    key,
-    new URL(path.replace(/^\/+/, ''), C2_WIX_BASE.replace(/\/+$/, '') + '/').href + '?rc=test-site'
-  ])
+  Object.entries(C2_WIX_PATHS).map(([key,path])=>[key,C2_WIX_BASE+path+'?rc=test-site'])
 );
-
-// Wix iframe navigation: send the exact absolute URL to the parent Wix page.
-// Wix Velo must receive NAVIGATE and call wixLocationFrontend.to(url).
-// Do not attempt window.top navigation: Wix iframe sandbox can block it.
 document.querySelectorAll('.c2-cta[data-c2-page]').forEach(link => {
-  const url = C2_PAGE_URLS[link.dataset.c2Page];
-  if (!url) return;
-  link.href = url;
-  link.target = '_top'; // supports copying the correct link
-  link.addEventListener('click', event => {
-    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-    event.preventDefault();
-    window.parent.postMessage({channel:'c2dg-animation-v1', type:'NAVIGATE', url}, '*');
-  });
+  const url=C2_PAGE_URLS[link.dataset.c2Page];
+  if(url){
+    link.href=url;
+    // Wix Velo owns same-tab navigation. The actual href remains usable.
+    link.target='_self';
+    link.removeAttribute('rel');
+    link.addEventListener('click', event=>{
+      if(event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button!==0)return;
+      event.preventDefault();
+      // A direct click can safely navigate the Wix page through Velo's wixLocation.to().
+      // Fallback opens the correct Wix URL in the existing embedded frame if the
+      // Velo receiver has not been installed; never create a new tab.
+      const requestId='nav-'+Date.now();
+      let acknowledged=false;
+      const receiveAck=e=>{
+        if(e.data?.channel==='c2dg-animation-v1' && e.data.type==='NAVIGATE_ACK' && e.data.requestId===requestId){
+          acknowledged=true;removeEventListener('message',receiveAck);
+        }
+      };
+      addEventListener('message',receiveAck);
+      window.parent.postMessage({channel:'c2dg-animation-v1',type:'NAVIGATE',url,requestId},'*');
+      setTimeout(()=>{
+        removeEventListener('message',receiveAck);
+        if(!acknowledged) window.location.assign(url);
+      },1200);
+    });
+  }
 });
 
 /* =========================================================

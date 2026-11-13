@@ -543,12 +543,12 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
 @media (min-width:1025px){
   .hero-copy p:last-child{max-width:475px!important;}
 }
-/* V34 — Inset the LEFT edge of the entire hero copy column while keeping
-   its right boundary fixed. The previous version only narrowed the paragraph. */
+/* V35 — Match the Our Work section's left content rail exactly.
+   V34 added a 65px inset, which caused the visible misalignment. */
 @media (min-width:1025px){
   .hero-copy{
-    left:calc(var(--c2-edge) + 65px)!important;
-    width:min(545px,calc(var(--c2-rail) * .51 - 65px))!important;
+    left:var(--c2-edge)!important;
+    width:min(545px,calc(var(--c2-rail) * .51))!important;
   }
   .hero-copy p:last-child{max-width:440px!important;}
 }

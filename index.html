@@ -34,7 +34,7 @@ section{scroll-margin-top:0}
 #scrollProgress{position:fixed;z-index:1100;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--c2-pink),var(--c2-teal));transform-origin:left}
 
 .full-section{position:relative;height:100dvh;min-height:100dvh;max-height:100dvh;scroll-snap-align:start;overflow:hidden}
-.hero{background:radial-gradient(circle at 68% 36%,rgba(0,186,180,.24) 0%,transparent 28%),radial-gradient(circle at 35% 65%,rgba(238,38,82,.20) 0%,transparent 30%),radial-gradient(circle at 50% 45%,#31265d 0%,var(--c2-plum) 42%,#080a0f 78%)}
+.hero{background:radial-gradient(ellipse at 75% 58%,rgba(238,38,82,.24) 0%,transparent 38%),radial-gradient(ellipse at 84% 22%,rgba(0,186,180,.24) 0%,transparent 34%),radial-gradient(ellipse at 58% 44%,#352354 0%,#1E1545 47%,#0d0922 88%)}
 #webgl{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero-copy{position:absolute;z-index:5;left:7vw;top:50%;transform:translateY(-50%);max-width:690px;pointer-events:none}
 .eyebrow,.section-kicker,.chapter-number{margin:0 0 14px;font-size:11px !important;line-height:1.2;letter-spacing:.2em;text-transform:uppercase;opacity:.58;font-weight:500}
@@ -552,6 +552,18 @@ body,button,input,select,textarea{font-family:"filson-pro", "Filson Pro", Arial,
   }
   .hero-copy p:last-child{max-width:440px!important;}
 }
+
+/* C2DG headline punctuation and light-background brand color */
+.c2-headline-period{color:#EE2652!important;-webkit-text-fill-color:#EE2652!important}
+.work-intro h2,.standard:not(.dark) h2,.contact h2{color:#1E1545!important}
+
+/* C2DG headline punctuation and light-background brand color */
+.c2-headline-period{color:#EE2652!important;-webkit-text-fill-color:#EE2652!important}
+.work-intro h2,.standard:not(.dark) h2,.contact h2{color:#1E1545!important}
+
+/* V36 — C2DG brand headlines, including the light Print & Digital flipbook */
+#design-flipbook .flip-copy h2{color:#1E1545!important;-webkit-text-fill-color:#1E1545!important}
+#design-flipbook .flip-copy h2 .c2-headline-period{color:#EE2652!important;-webkit-text-fill-color:#EE2652!important}
 </style>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
@@ -579,7 +591,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div id="loading">Loading 3D experience…</div>
   <div class="hero-copy">
     <p class="eyebrow">C2 Design Group • Creative Design & Media</p>
-    <h1>Ideas<br>in motion.</h1>
+    <h1>Ideas<br>in motion<span class="c2-headline-period">.</span></h1>
     <p>Strategic branding, print and digital media, professional photography, certified drone capabilities, and motion content designed to make brands and projects stand out.</p>
     <a class="c2-cta" data-c2-page="work" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">Explore what we elevate</a>
   </div>
@@ -589,7 +601,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
 <section id="our-work" class="full-section work-intro">
   <div class="work-intro-inner">
     <p class="section-kicker">01 / Our Work</p>
-    <h2>Creative work built to move brands forward.</h2>
+    <h2>Creative work built to move brands forward<span class="c2-headline-period">.</span></h2>
     <p>Explore how C2 Design Group brings together brand strategy, graphic design, print, digital experiences, photography, aerial imagery, and video to create cohesive visual communication.</p>
       <a class="c2-cta" data-c2-page="work" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how our work elevates</a>
   </div>
@@ -601,7 +613,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div class="chapter-inner">
     <div class="chapter-copy reveal">
       <div class="section-kicker">Our Work — Branding</div>
-      <h2>Make the first impression count.</h2>
+      <h2>Make the first impression count<span class="c2-headline-period">.</span></h2>
       <p>C2 Design Group develops distinctive brand identities, visual systems, typography, messaging direction, and supporting brand assets that create consistency across every customer touchpoint.</p>
       <a class="c2-cta" data-c2-page="brands" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how we elevate Brands</a>
     </div>
@@ -614,7 +626,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
     <div class="flip-grid">
       <div class="flip-copy">
         <div class="section-kicker">Our Work — Print & Digital Media</div>
-        <h2>Designed for screen and paper.</h2>
+        <h2>Designed for screen and paper<span class="c2-headline-period">.</span></h2>
         <p>From brochures, books, business cards, presentations, campaigns, and print collateral to responsive digital experiences, C2 creates polished communication systems that work across formats.</p>
         <a class="c2-cta" data-c2-page="print" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how we elevate Print</a>
       </div>
@@ -643,7 +655,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
     <div id="drone-loading">Loading aerial experience…</div>
     <div class="photo-copy">
       <p class="section-kicker">Our Work — Photography • Certified Drone Capabilities</p>
-      <h2>See the whole picture.</h2>
+      <h2>See the whole picture<span class="c2-headline-period">.</span></h2>
       <p>C2 Design Group combines professional photography with the expertise and licensing necessary to produce aerial photography and video, giving properties, developments, businesses, and projects a powerful visual perspective.</p>
       <a class="c2-cta" data-c2-page="photography" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how we elevate Photography</a>
     </div>
@@ -655,7 +667,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
 
 <section id="photography" class="photo-gallery-section" aria-labelledby="photography-title">
   <div class="photo-gallery-shell">
-    <div class="photo-gallery-intro"><div><p class="section-kicker">Our Work — Photography</p><h2 id="photography-title">See it<br>differently.</h2></div><p>Explore four distinct C2DG photography disciplines. Click any category to open a full-screen gallery, then use the arrows, keyboard, or swipe gestures to move through the work.</p></div>
+    <div class="photo-gallery-intro"><div><p class="section-kicker">Our Work — Photography</p><h2 id="photography-title">See it<br>differently<span class="c2-headline-period">.</span></h2></div><p>Explore four distinct C2DG photography disciplines. Click any category to open a full-screen gallery, then use the arrows, keyboard, or swipe gestures to move through the work.</p></div>
     <div class="photo-gallery" role="list">
       <button class="photo-tile photo-tile-wide" type="button" role="listitem" data-gallery="aerials"><img src="https://static.wixstatic.com/media/beab6e_85c124f713574e499860d4a4333921a8~mv2.jpg" alt="C2DG aerial photography" loading="lazy"><span><b>01</b>Aerials</span></button>
       <button class="photo-tile photo-tile-tall" type="button" role="listitem" data-gallery="architecture"><img src="https://static.wixstatic.com/media/4f980b_54d12d6345aa4aea9ac765861fad02dd~mv2.jpg" alt="C2DG architecture photography" loading="lazy"><span><b>02</b>Architecture</span></button>
@@ -686,7 +698,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div class="chapter-inner">
     <div class="chapter-copy reveal">
       <div class="section-kicker">Our Work — Videography</div>
-      <h2><span class="video-title-line">Give the story</span> <span class="video-title-line">a pulse.</span></h2>
+      <h2><span class="video-title-line">Give the story</span> <span class="video-title-line">a pulse<span class="c2-headline-period">.</span></span></h2>
       <p>Brand films, property videos, project documentation, social content, and motion graphics help audiences understand not just what you do, but why it matters.</p>
       <a class="c2-cta" data-c2-page="videography" href="https://creative-c2dg.wixstudio.com/my-site-2" target="_top" rel="noopener">See how we elevate Videography</a>
     </div>
@@ -703,7 +715,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div class="standard-inner">
     <div>
       <p class="section-kicker">02 / Our Story</p>
-      <h2>Keep good ideas rolling.</h2>
+      <h2>Keep good ideas rolling<span class="c2-headline-period">.</span></h2>
     </div>
     <div>
       <p>C2 Design Group keeps ideas rolling—from the first spark of a concept to the final piece that reaches an audience. Our approach connects strategy, identity, production, photography, and motion so the story keeps moving.</p>
@@ -718,7 +730,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
   <div class="standard-inner">
     <div>
       <p class="section-kicker">03 / Our Mission</p>
-      <h2>Elevate the way your story is seen.</h2>
+      <h2>Elevate the way your story is seen<span class="c2-headline-period">.</span></h2>
     </div>
     <div>
       <p>Our mission is to help organizations communicate with clarity, confidence, and visual impact. We combine creative direction with production expertise to create branding, media, and digital experiences that support measurable business goals.</p>
@@ -741,6 +753,7 @@ button,.cta,.chapter-cta,.c2-cta,a[class*="btn"],a[class*="cta"]{font-family:var
 <script type="module">
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const C2_MODEL_URL = './models/C2Icon.glb';
 
@@ -754,16 +767,40 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
 const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+const studioEnvironment = new RoomEnvironment();
+scene.environment = pmrem.fromScene(studioEnvironment, 0.04).texture;
+studioEnvironment.dispose();
+pmrem.dispose();
 const camera = new THREE.PerspectiveCamera(25,canvas.clientWidth/canvas.clientHeight,.1000,1000);
 camera.position.set(20,5,20);
 camera.lookAt(0,3,0);
-scene.add(new THREE.HemisphereLight(0xffffff,0x202530,10));
-const key = new THREE.DirectionalLight(0xffffff,4); key.position.set(5,1,-5); scene.add(key);
-const fill = new THREE.DirectionalLight(0x6688ff,3.2); fill.position.set(5,30,-4); scene.add(fill);
+// C2DG V37: softer satin metal, visible teal fill, reversed initial yaw. GLB geometry unchanged.
+scene.add(new THREE.HemisphereLight(0x000000,0x160e30,1.55));
+const key = new THREE.DirectionalLight(0xffd9ee,8.4); key.position.set(-3,9,1); scene.add(key);
+const pinkRim = new THREE.DirectionalLight(0xEE2652,1.5); pinkRim.position.set(7,8,-2); scene.add(pinkRim);
+const tealRim = new THREE.DirectionalLight(0x00BAB4,9.3); tealRim.position.set(6,2,-9); scene.add(tealRim);
+const whiteStrip = new THREE.DirectionalLight(0xffffff,9.5); whiteStrip.position.set(7,1,-1); scene.add(whiteStrip);
 
 let heroModel, heroMixer, heroClip;
 function loadHeroModel(){new GLTFLoader().load(C2_MODEL_URL,(gltf)=>{
   heroModel=gltf.scene;
+  // Only replace surface shaders: mesh positions, names, topology, transforms, and GLB animation stay intact.
+  // Metal needs a reflection source; use a procedural studio environment (no external HDR download).
+  heroModel.traverse((node)=>{
+    if(!node.isMesh) return;
+    const isDot = /dot|circle|sphere/i.test(node.name);
+    const makeMetal = (original)=>new THREE.MeshPhysicalMaterial({
+      color: isDot ? 0xEE2652 : 0x746486,
+      metalness: 1.00,
+      roughness: isDot ? 0.39 : 0.49,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.6,
+      envMapIntensity: 0.82,
+      side: original?.side ?? THREE.FrontSide
+    });
+    node.material=Array.isArray(node.material)?node.material.map(makeMetal):makeMetal(node.material);
+  });
   heroModel.scale.setScalar(1.5);
 	heroModel.rotation.set(0, 0, 0);
   scene.add(heroModel);
@@ -786,7 +823,7 @@ function updateHero(){
   const p=heroProgress();
   if(heroMixer&&heroClip) heroMixer.setTime(heroClip.duration*p);
   if(heroModel){
-    heroModel.rotation.y = p*Math.PI*1.8;
+    heroModel.rotation.y = -0.48 + p*Math.PI*2.35; // V37: start angled toward left-hand headline; retain enhanced scroll spin
     heroModel.position.y = Math.sin(p*Math.PI)*.28;
     // V33: bring desktop C2 icon back inside the right edge of the Wix navigation rail.
     // Keep tablet/mobile composition and existing animation unchanged.
